@@ -162,7 +162,7 @@ export interface CaseStudyLink {
   h: string;
 }
 export const LINKS: CaseStudyLink[][] = [
-  [{ t: 'View Website', h: 'https://daiquangminh.thadico.com.vn/' }, { t: 'View Social Media', h: 'https://www.facebook.com/thadicodaiquangminh' }],
+  [{ t: 'View Brochure', h: 'https://sareneresidences.vn/' }, { t: 'View Proposal', h: 'https://sarene-sala.vn/' }],
   [{ t: 'View Website', h: 'https://thisoretail.com/' }, { t: 'View Social Media', h: 'https://www.facebook.com/THISOMall.SaLa' }],
   [{ t: 'View Social Media', h: 'https://www.facebook.com/Thuctinhtamhon' }],
 ];
