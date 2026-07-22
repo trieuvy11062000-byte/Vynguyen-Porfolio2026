@@ -7,12 +7,6 @@ import { MP } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 
-const STATUS_ROWS: { label: string; status: string; color: string }[] = [
-  { label: 'Sarene 6.8 Launch — PR', status: '● Published', color: '#4ADE80' },
-  { label: 'THISO Mall — Website', status: '● Scheduled', color: '#60A5FA' },
-  { label: 'Pop Mart Recap — Social', status: '● Review', color: '#FBBF24' },
-];
-
 const CHIP_STYLE: Record<'website' | 'newsletter' | 'email', { bg: string; border: string; color: string; label: string }> = {
   website: { bg: 'rgba(45,212,191,.16)', border: 'rgba(45,212,191,.4)', color: '#5EEAD4', label: 'Website' },
   newsletter: { bg: 'rgba(182,0,168,.16)', border: 'rgba(182,0,168,.5)', color: '#E45CFF', label: 'Newsletter' },
@@ -47,30 +41,7 @@ export function Project2() {
           <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 24, padding: 20 }}>
             <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 12 }}>CMS / Website Editorial Portal</div>
             <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
-              <ImageSlot id="p2-cms" placeholder="CMS screenshot" style={{ width: '100%', height: 170, filter: 'blur(4px)', opacity: 0.7 }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(12,12,12,.25),rgba(12,12,12,.7))', pointerEvents: 'none' }} />
-              <div
-                className="font-mono-vy"
-                style={{ position: 'absolute', inset: 12, display: 'flex', flexDirection: 'column', gap: 7, justifyContent: 'flex-end', pointerEvents: 'none', fontSize: 10 }}
-              >
-                {STATUS_ROWS.map((row) => (
-                  <div
-                    key={row.label}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      background: 'rgba(20,22,26,.8)',
-                      border: '1px solid rgba(255,255,255,.1)',
-                      borderRadius: 8,
-                      padding: '6px 10px',
-                    }}
-                  >
-                    <span>{row.label}</span>
-                    <span style={{ color: row.color }}>{row.status}</span>
-                  </div>
-                ))}
-              </div>
+              <ImageSlot id="p2-cms" placeholder="CMS screenshot" style={{ width: '100%', height: 170 }} />
             </div>
           </div>
 
@@ -116,7 +87,7 @@ export function Project2() {
         {/* Right: Digital Publication Experience */}
         <div style={{ position: 'sticky', top: 'clamp(120px,16vh,170px)', alignSelf: 'start' }}>
           <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 16 }}>
-            Digital Publication Experience — Internal Newsletter
+            Digital Publication Experience — Newsletter
           </div>
           <div
             onMouseMove={handleMove}
@@ -157,24 +128,6 @@ export function Project2() {
                   }}
                 >
                   <ImageSlot id={`mag-${i}`} fit="contain" placeholder={ph} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#16141c' }} />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      padding: '24px 12px 10px',
-                      background: 'linear-gradient(180deg,transparent,rgba(12,12,12,.75))',
-                      pointerEvents: 'none',
-                      fontSize: 11,
-                      fontWeight: 600,
-                      textAlign: 'center',
-                      opacity: d === 0 ? 1 : 0,
-                      transition: 'opacity .4s',
-                    }}
-                  >
-                    {ph}
-                  </div>
                 </div>
               );
             })}

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
@@ -6,6 +6,47 @@ import { CarouselNav } from './CarouselNav';
 import { SPD, LINKS, GAL } from '../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+const DEFAULT_GALLERY_RATIO = 16 / 10;
+
+/** Frame height adapts to each slide's own image ratio so nothing gets cropped or upscaled-blurry. */
+function CaseStudyGallery({ projectIndex, spg }: { projectIndex: number; spg: number }) {
+  const [ratios, setRatios] = useState<Record<number, number>>({});
+  const [height, setHeight] = useState(320);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const recompute = () => {
+      const w = containerRef.current?.clientWidth;
+      if (!w) return;
+      const ratio = ratios[spg] ?? DEFAULT_GALLERY_RATIO;
+      setHeight(Math.min(w / ratio, window.innerHeight * 0.7));
+    };
+    recompute();
+    window.addEventListener('resize', recompute);
+    return () => window.removeEventListener('resize', recompute);
+  }, [spg, ratios]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,.14)', height, transition: 'height .45s cubic-bezier(.3,1,.3,1)' }}
+    >
+      <div style={{ display: 'flex', height: '100%', transition: 'transform .5s cubic-bezier(.3,1,.3,1)', transform: `translateX(${-spg * 100}%)` }}>
+        {GAL.map((g, gi) => (
+          <div key={g.id} style={{ flex: '0 0 100%', position: 'relative', height: '100%', background: '#16141c' }}>
+            <ImageSlot
+              id={`sp${projectIndex}-${g.id}`}
+              placeholder={g.ph}
+              fit="contain"
+              onRatio={(r) => setRatios((prev) => (prev[gi] === r ? prev : { ...prev, [gi]: r }))}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function SelectedProjects() {
   const { t, lang } = useThemeLang();
@@ -75,20 +116,7 @@ export function SelectedProjects() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 'clamp(24px,3vw,40px)', alignItems: 'start' }}>
                   {/* Left: gallery */}
                   <div>
-                    <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,.14)' }}>
-                      <div style={{ display: 'flex', transition: 'transform .5s cubic-bezier(.3,1,.3,1)', transform: `translateX(${-spg * 100}%)` }}>
-                        {GAL.map((g) => (
-                          <div key={g.id} style={{ flex: '0 0 100%', position: 'relative', aspectRatio: '16/10', background: '#16141c' }}>
-                            <ImageSlot
-                              id={`sp${i}-${g.id}`}
-                              placeholder={g.ph}
-                              parallax={0.12}
-                              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <CaseStudyGallery projectIndex={i} spg={spg} />
                     <CarouselNav
                       onPrev={() => setSpg((s) => clamp(s - 1, 0, GAL.length - 1))}
                       onNext={() => setSpg((s) => clamp(s + 1, 0, GAL.length - 1))}
@@ -162,7 +190,6 @@ export function SelectedProjects() {
                         marginBottom: 20,
                       }}
                     >
-                      <span>◷ {p.time}</span>
                       <span>◆ {p.role}</span>
                       <span>▣ {p.org}</span>
                     </div>

@@ -35,8 +35,8 @@ interface ImageSlotProps {
  * HEAD request to confirm it actually exists (checking content-type, not
  * just HTTP status — dev servers and SPA hosts often answer missing paths
  * with a 200 + index.html instead of a real 404) and renders the first
- * match — photo, video, or PDF — falling back to a labeled placeholder if
- * none of them do.
+ * match — photo or video — falling back to a labeled placeholder if none
+ * of them do.
  */
 export function ImageSlot({ id, alt, shape = 'rect', fit = 'cover', placeholder, parallax, className, style, onRatio, playIcon }: ImageSlotProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -104,43 +104,10 @@ export function ImageSlot({ id, alt, shape = 'rect', fit = 'cover', placeholder,
     );
   }
 
-  const showIcon = playIcon && kind !== 'pdf' && !playing;
+  const showIcon = playIcon && !playing;
 
   return (
     <div ref={ref} className={className} style={{ ...style, borderRadius: style?.borderRadius ?? radius, overflow: 'hidden' }}>
-      {kind === 'pdf' && (
-        <>
-          <iframe
-            src={resolved}
-            title={alt ?? placeholder}
-            onLoad={() => onRatio?.(1 / Math.SQRT2)}
-            onError={() => setResolved(null)}
-            style={{ width: '100%', height: '100%', border: 'none', display: 'block', background: '#fff' }}
-          />
-          <a
-            href={resolved}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'absolute',
-              right: 10,
-              top: 10,
-              zIndex: 5,
-              fontSize: 11,
-              fontWeight: 600,
-              padding: '6px 12px',
-              borderRadius: 999,
-              background: 'rgba(12,12,12,.7)',
-              color: '#D7E2EA',
-              backdropFilter: 'blur(6px)',
-            }}
-          >
-            Mở tab mới ↗
-          </a>
-        </>
-      )}
-
       {kind === 'video' && (
         <video
           ref={videoRef}

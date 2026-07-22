@@ -6,10 +6,10 @@ export interface VideoCard {
   v: string;
 }
 export const VC: VideoCard[] = [
-  { t: '3CE Activation Recap', f: 'Reel · 9:16', v: '120K' },
-  { t: 'Pop Mart Store Launch', f: 'TikTok · 9:16', v: '85K' },
-  { t: 'Sarene 6.8 Teaser', f: 'Reel · 9:16', v: '64K' },
-  { t: 'THISO Mall Event', f: 'Story · 9:16', v: '40K' },
+  { t: '3CE Activation Recap', f: 'Reel + TikTok', v: '70K' },
+  { t: 'Pop Mart Store Launch', f: 'TikTok', v: '18K' },
+  { t: 'THISO Mall Event', f: 'Story', v: '40K' },
+  { t: 'Sarene 6.8 Teaser', f: 'TikTok', v: '49K' },
 ];
 
 export interface WideSlide {
@@ -18,8 +18,7 @@ export interface WideSlide {
 export const WS: WideSlide[] = [
   { t: 'Event Trailer' },
   { t: 'Event Recap' },
-  { t: 'TVC — 3CE Activation' },
-  { t: 'Launch Highlight — Pop Mart' },
+  { t: 'TVC — THACO Group' },
 ];
 
 export const MP: string[] = [
@@ -40,7 +39,7 @@ export const DOCS: DocItem[] = [
   { n: 'Sales Guide', p: '24', tag: 'Sales Enablement' },
   { n: 'Product Guideline', p: '18', tag: 'Brand System' },
   { n: 'Brochure', p: '12', tag: 'Marketing Collateral' },
-  { n: 'Presentation Deck', p: '40', tag: 'Pitch & Reporting' },
+  // Presentation Deck hidden until a real asset is provided (see NOI-DUNG.md)
 ];
 
 export interface CertItem {
@@ -104,7 +103,7 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       short: 'Chiến dịch launch tích hợp — từ chiến lược đến sự kiện thực tế.',
     },
     {
-      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Hệ sinh thái nội dung', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation',
+      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Hệ sinh thái nội dung', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
       bg: 'Vận hành truyền thông cho trung tâm thương mại với nhiều brand activation lớn: 3CE, Pop Mart store launch tại THISO Mall Sala.',
       prob: 'Giữ nhịp nội dung đa kênh liên tục và đồng bộ thông điệp giữa tenant, agency và nội bộ — với nguồn lực giới hạn.',
       roleB: ['Content Strategy đa nền tảng', 'Điều phối activation với tenant/agency', 'Quản lý ấn phẩm & timeline', 'Theo dõi & tối ưu hiệu quả'],
@@ -136,7 +135,7 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       short: 'Integrated launch campaign — from strategy to on-ground event.',
     },
     {
-      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Content Ecosystem', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation',
+      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Content Ecosystem', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
       bg: 'Ran communications for a retail mall with major brand activations: 3CE campaigns and the Pop Mart store launch at THISO Mall Sala.',
       prob: 'Sustain a continuous multi-channel content rhythm and keep messaging aligned across tenants, agencies and internal teams — with limited resources.',
       roleB: ['Multi-platform content strategy', 'Activation coordination with tenants/agencies', 'Asset & timeline management', 'Performance monitoring & optimization'],
@@ -177,4 +176,6 @@ export const GAL: GalleryItem[] = [
   { id: 't0', ph: 'photo / screenshot' },
   { id: 't1', ph: 'photo / screenshot' },
   { id: 't2', ph: 'photo / screenshot' },
+  { id: 't3', ph: 'photo / screenshot' },
+  { id: 't4', ph: 'photo / screenshot' },
 ];

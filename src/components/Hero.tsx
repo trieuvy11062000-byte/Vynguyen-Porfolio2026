@@ -1,19 +1,14 @@
-import { useEffect, useState, type MouseEvent } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
 import { DOWNLOADS } from '../data/mediaAssets';
+import { useFileExists } from '../hooks/useFileExists';
 
 export function Hero() {
   const { t, c, gA, gB, ctaGlow } = useThemeLang();
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [cvReady, setCvReady] = useState(false);
-
-  useEffect(() => {
-    fetch(DOWNLOADS.cv, { method: 'HEAD' })
-      .then((res) => setCvReady(res.ok && !(res.headers.get('content-type') || '').includes('text/html')))
-      .catch(() => setCvReady(false));
-  }, []);
+  const cvReady = useFileExists(DOWNLOADS.cv);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();

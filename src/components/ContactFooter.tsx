@@ -17,6 +17,9 @@ const inputStyle: React.CSSProperties = {
 export function ContactFooter() {
   const { t, ctaGlow } = useThemeLang();
   const [copied, setCopied] = useState(false);
+  const [name, setName] = useState('');
+  const [fromEmail, setFromEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const copyEmail = () => {
     navigator.clipboard?.writeText(EMAIL);
@@ -26,6 +29,10 @@ export function ContactFooter() {
 
   const focusStyle = (e: React.FocusEvent<HTMLElement>) => (e.currentTarget.style.borderColor = '#B600A8');
   const blurStyle = (e: React.FocusEvent<HTMLElement>) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.15)');
+
+  const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent(`Liên hệ từ ${name || 'website'}`)}&body=${encodeURIComponent(
+    `${message}\n\n${fromEmail ? `Email liên hệ lại: ${fromEmail}` : ''}`,
+  )}`;
 
   return (
     <section id="contact" style={{ background: '#0C0C0C', color: '#D7E2EA', padding: '90px clamp(16px,4vw,64px) 40px', borderTop: '1px solid rgba(255,255,255,.08)' }}>
@@ -73,7 +80,7 @@ export function ContactFooter() {
               <span style={{ fontFamily: 'Kanit,sans-serif', fontSize: 12, fontWeight: 700, color: '#E45CFF' }}>{copied ? t.copied : t.copy}</span>
             </button>
             <a
-              href="https://linkedin.com/in/nntrieuvy/"
+              href="https://www.linkedin.com/in/nntrieuvy/"
               target="_blank"
               rel="noreferrer"
               style={{ display: 'flex', justifyContent: 'space-between', background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 16, padding: '18px 22px', fontSize: 14, fontWeight: 600 }}
@@ -83,27 +90,16 @@ export function ContactFooter() {
               <span>LinkedIn</span>
               <span>↗</span>
             </a>
-            <a
-              href="https://www.facebook.com/Thuctinhtamhon"
-              target="_blank"
-              rel="noreferrer"
-              style={{ display: 'flex', justifyContent: 'space-between', background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 16, padding: '18px 22px', fontSize: 14, fontWeight: 600 }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#B600A8')}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.15)')}
-            >
-              <span>Facebook</span>
-              <span>↗</span>
-            </a>
             <div className="font-mono-vy" style={{ fontSize: 12, color: '#7A8591', padding: '0 4px' }}>
               Ho Chi Minh City, Vietnam · 0911 994 005
             </div>
           </div>
           <form style={{ display: 'flex', flexDirection: 'column', gap: 14 }} onSubmit={(e) => e.preventDefault()}>
-            <input placeholder={t.fName} style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
-            <input placeholder={t.fMail} type="email" style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
-            <textarea placeholder={t.fMsg} rows={4} style={{ ...inputStyle, resize: 'vertical' }} onFocus={focusStyle} onBlur={blurStyle} />
+            <input placeholder={t.fName} value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
+            <input placeholder={t.fMail} type="email" value={fromEmail} onChange={(e) => setFromEmail(e.target.value)} style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
+            <textarea placeholder={t.fMsg} rows={4} value={message} onChange={(e) => setMessage(e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} onFocus={focusStyle} onBlur={blurStyle} />
             <a
-              href={`mailto:${EMAIL}`}
+              href={mailtoHref}
               style={{
                 display: 'inline-block',
                 textAlign: 'center',

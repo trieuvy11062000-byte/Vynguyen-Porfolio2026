@@ -4,9 +4,39 @@ import { ImageSlot } from '../ImageSlot';
 import { CarouselNav } from '../CarouselNav';
 import { ProjectHeader } from './ProjectHeader';
 import { DOCS } from '../../data/content';
+import { DOWNLOADS } from '../../data/mediaAssets';
+import { useFileExists } from '../../hooks/useFileExists';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 const DEFAULT_RATIO = 16 / 10;
+
+function ViewFullPdfLink({ index }: { index: number }) {
+  const url = DOWNLOADS.p3Doc(index);
+  const ready = useFileExists(url);
+  if (!ready) return null;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        position: 'absolute',
+        right: 16,
+        top: 12,
+        fontSize: 11,
+        fontWeight: 600,
+        padding: '5px 12px',
+        borderRadius: 999,
+        background: 'rgba(12,12,12,.55)',
+        color: '#D7E2EA',
+        backdropFilter: 'blur(6px)',
+      }}
+    >
+      Xem PDF đầy đủ ↗
+    </a>
+  );
+}
 
 export function Project3() {
   const { t, glow, heroGlow } = useThemeLang();
@@ -129,7 +159,7 @@ export function Project3() {
                     <ImageSlot
                       id={`p3-show-${i}`}
                       fit="contain"
-                      placeholder={`${doc.n} — spread preview (ảnh hoặc file PDF)`}
+                      placeholder={`${doc.n} — spread preview`}
                       onRatio={(r) => setRatios((prev) => (prev[i] === r ? prev : { ...prev, [i]: r }))}
                       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
                     />
@@ -150,6 +180,7 @@ export function Project3() {
                   >
                     {doc.n}
                   </div>
+                  <ViewFullPdfLink index={i} />
                 </div>
               ))}
             </div>
