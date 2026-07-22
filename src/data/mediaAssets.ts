@@ -12,9 +12,9 @@ const VIDEO_EXTS = ['mp4', 'webm', 'mov'];
 // extensions first, but a plain photo still works as a static thumbnail.
 const VIDEO_SLOTS = new Set(['p1v-0', 'p1v-1', 'p1v-2', 'p1v-3', 'p1w-0', 'p1w-1', 'p1w-2', 'p1w-3']);
 
-// Project 03's main showcase viewer accepts a PDF (rendered inline) in
-// addition to a spread-preview image.
-const PDF_SLOTS = new Set(['p3-show-0', 'p3-show-1', 'p3-show-2', 'p3-show-3', 'p3-show-4']);
+// Project 03's main showcase viewer and Project 02's email preview accept a
+// PDF (rendered inline) in addition to a spread-preview image.
+const PDF_SLOTS = new Set(['p3-show-0', 'p3-show-1', 'p3-show-2', 'p3-show-3', 'p3-show-4', 'p2-email']);
 
 export function getMediaCandidates(id: string): string[] {
   const list: string[] = [];

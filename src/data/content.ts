@@ -109,8 +109,8 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       prob: 'Giữ nhịp nội dung đa kênh liên tục và đồng bộ thông điệp giữa tenant, agency và nội bộ — với nguồn lực giới hạn.',
       roleB: ['Content Strategy đa nền tảng', 'Điều phối activation với tenant/agency', 'Quản lý ấn phẩm & timeline', 'Theo dõi & tối ưu hiệu quả'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
-      outs: ['16+ chiến dịch & sự kiện activation được thực thi', 'Hệ nội dung nhất quán trên social, website, email, ấn phẩm', 'Hỗ trợ truyền thông cho 2.000+ nhân sự & stakeholder'],
-      mets: [{ v: '16+', l: 'Campaign thực hiện' }, { v: '500+', l: 'Khách tham dự sự kiện' }, { v: '5+', l: 'Định dạng nội dung' }, { v: '2000+', l: 'Nhân sự tiếp cận' }],
+      outs: ['16+ chiến dịch & sự kiện activation được thực thi', 'Hệ nội dung nhất quán trên social, website, email, ấn phẩm', 'Thúc đẩy nhận diện thương hiệu & lượng foot-traffic cho TTM'],
+      mets: [{ v: '16+', l: 'Campaign thực hiện' }, { v: '5M+', l: 'Lượt tiếp cận trên Social (Reach)' }, { v: '80K+', l: 'Lượt tương tác nội dung (Engagement)' }, { v: '1.5M+', l: 'Lượt tiếp cận (Total Social Reach)' }],
       short: 'Vận hành nội dung & activation đa kênh cho retail — 3CE, Pop Mart.',
     },
     {
@@ -141,8 +141,8 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       prob: 'Sustain a continuous multi-channel content rhythm and keep messaging aligned across tenants, agencies and internal teams — with limited resources.',
       roleB: ['Multi-platform content strategy', 'Activation coordination with tenants/agencies', 'Asset & timeline management', 'Performance monitoring & optimization'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
-      outs: ['16+ campaigns & activation events executed', 'Consistent content system across social, web, email, print', 'Communication support for 2,000+ staff & stakeholders'],
-      mets: [{ v: '16+', l: 'Campaigns executed' }, { v: '500+', l: 'Event attendees' }, { v: '5+', l: 'Content formats' }, { v: '2000+', l: 'Staff reached' }],
+      outs: ['16+ campaigns & activation events executed', 'Consistent content system across social, web, email, print', 'Boosted brand recognition & foot traffic for THISO Mall'],
+      mets: [{ v: '16+', l: 'Campaigns executed' }, { v: '5M+', l: 'Social Reach' }, { v: '80K+', l: 'Content Engagement' }, { v: '1.5M+', l: 'Total Social Reach' }],
       short: 'Multi-channel retail content & activation ops — 3CE, Pop Mart.',
     },
     {
