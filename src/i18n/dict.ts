@@ -2,7 +2,7 @@ export type Lang = 'vi' | 'en';
 
 export interface DictShape {
   about: string; services: string; projects: string; certs: string; contact: string;
-  heroH: string; heroSub: string; cta: string;
+  heroH: string; heroSub: string; cta: string; cvBtn: string;
   c1: string; c2: string; c3: string;
   aboutP: string; edu: string;
   tl1t: string; tl1d1: string; tl1d2: string; tl1m: string;
@@ -20,7 +20,7 @@ export const DICT: Record<Lang, DictShape> = {
     about: 'Giới thiệu', services: 'Dịch vụ', projects: 'Dự án', certs: 'Chứng chỉ', contact: 'Liên hệ',
     heroH: 'Hi, Vỹ Nguyễn đây',
     heroSub: 'CREATIVE STRATEGIST & BRAND ARCHITECT — KẾT NỐI NARRATIVE STORYTELLING, EXPERIENTIAL EVENTS & DIGITAL UX ĐA NGÀNH.',
-    cta: 'Khám phá dự án',
+    cta: 'Khám phá dự án', cvBtn: 'Tải CV',
     c1: 'Ấn phẩm chiến dịch đã sản xuất', c2: 'Lượt xem video social', c3: 'Sự kiện activation offline',
     aboutP: 'Tôi là người làm Marketing và Truyền thông với kinh nghiệm trong Branding, Social Media, Event và Content Strategy. Tôi thích biến ý tưởng phức tạp thành câu chuyện dễ hiểu và tạo ra chiến dịch mang giá trị thực tế. Điểm mạnh của tôi là kết nối tư duy chiến lược với khả năng thực thi — từ truyền thông nội bộ, quản lý nội dung đến điều phối dự án đa phòng ban.',
     edu: 'Đại học Quốc tế, ĐHQG-HCM — Cử nhân QTKD · GPA 3.6/4.0 · 2018–2023',
@@ -39,7 +39,7 @@ export const DICT: Record<Lang, DictShape> = {
     about: 'About', services: 'Services', projects: 'Projects', certs: 'Certificates', contact: 'Contact',
     heroH: "Hi, I'm Vỹ Nguyễn",
     heroSub: 'CREATIVE STRATEGIST & BRAND ARCHITECT — BRIDGING NARRATIVE STORYTELLING, EXPERIENTIAL EVENTS & DIGITAL UX ACROSS INDUSTRIES.',
-    cta: 'Explore the work',
+    cta: 'Explore the work', cvBtn: 'Download CV',
     c1: 'Campaign assets produced', c2: 'Social video views generated', c3: 'Offline activation events',
     aboutP: 'I am a Marketing & Communications professional with experience in Branding, Social Media, Events and Content Strategy. I love turning complex ideas into stories people understand, and building campaigns that create real value. My strength is connecting strategic thinking with execution — from internal communications and content operations to cross-functional project coordination.',
     edu: 'International University, VNU-HCM — BBA · GPA 3.6/4.0 · 2018–2023',

@@ -3,7 +3,6 @@ import { useThemeLang } from '../../context/ThemeLangContext';
 import { ImageSlot } from '../ImageSlot';
 import { CarouselNav } from '../CarouselNav';
 import { ProjectHeader } from './ProjectHeader';
-import { IMAGE_ASSETS } from '../../data/imageAssets';
 import { MP } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -48,7 +47,7 @@ export function Project2() {
           <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 24, padding: 20 }}>
             <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 12 }}>CMS / Website Editorial Portal</div>
             <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
-              <ImageSlot id="p2-cms" src={IMAGE_ASSETS['p2-cms']} placeholder="CMS screenshot" style={{ width: '100%', height: 170, filter: 'blur(4px)', opacity: 0.7 }} />
+              <ImageSlot id="p2-cms" placeholder="CMS screenshot" style={{ width: '100%', height: 170, filter: 'blur(4px)', opacity: 0.7 }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(12,12,12,.25),rgba(12,12,12,.7))', pointerEvents: 'none' }} />
               <div
                 className="font-mono-vy"
@@ -96,7 +95,7 @@ export function Project2() {
               </div>
             </div>
             <div style={{ marginTop: 12, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
-              <ImageSlot id="p2-plan" src={IMAGE_ASSETS['p2-plan']} placeholder="content plan — cropped Excel area (calendar / timeline)" style={{ width: '100%', height: 110 }} />
+              <ImageSlot id="p2-plan" placeholder="content plan — cropped Excel area (calendar / timeline)" style={{ width: '100%', height: 110 }} />
             </div>
           </div>
 
@@ -109,11 +108,7 @@ export function Project2() {
               </div>
             </div>
             <div className="thin-scroll" style={{ height: 420, overflowY: 'auto', overflowX: 'hidden', borderRadius: 16, border: '1px solid rgba(255,255,255,.1)', background: 'rgba(12,12,12,.4)' }}>
-              {IMAGE_ASSETS['p2-email'] ? (
-                <img src={IMAGE_ASSETS['p2-email']} alt="Email marketing preview" style={{ width: '100%', height: 'auto', display: 'block' }} />
-              ) : (
-                <ImageSlot id="p2-email" placeholder="long-form email screenshot (full vertical)" style={{ width: '100%', height: 300 }} />
-              )}
+              <ImageSlot id="p2-email" fit="natural" placeholder="long-form email screenshot (full vertical)" style={{ width: '100%', minHeight: 300 }} />
             </div>
           </div>
         </div>
@@ -149,7 +144,7 @@ export function Project2() {
                     position: 'absolute',
                     left: '50%',
                     top: '50%',
-                    width: 'min(440px,58vw,calc(min(78vh,820px)*9/16 - 36px))',
+                    width: 'min(520px,64vw,calc(min(78vh,820px)*9/16 - 36px))',
                     aspectRatio: '9/16',
                     borderRadius: 14,
                     overflow: 'hidden',
@@ -161,7 +156,7 @@ export function Project2() {
                     zIndex: 10 - ad,
                   }}
                 >
-                  <ImageSlot id={`mag-${i}`} src={IMAGE_ASSETS[`mag-${i}`]} placeholder={ph} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+                  <ImageSlot id={`mag-${i}`} fit="contain" placeholder={ph} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#16141c' }} />
                   <div
                     style={{
                       position: 'absolute',

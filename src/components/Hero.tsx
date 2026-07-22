@@ -1,12 +1,19 @@
-import { useState, type MouseEvent } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
-import { IMAGE_ASSETS } from '../data/imageAssets';
+import { DOWNLOADS } from '../data/mediaAssets';
 
 export function Hero() {
   const { t, c, gA, gB, ctaGlow } = useThemeLang();
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [cvReady, setCvReady] = useState(false);
+
+  useEffect(() => {
+    fetch(DOWNLOADS.cv, { method: 'HEAD' })
+      .then((res) => setCvReady(res.ok && !(res.headers.get('content-type') || '').includes('text/html')))
+      .catch(() => setCvReady(false));
+  }, []);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -61,7 +68,6 @@ export function Hero() {
             />
             <ImageSlot
               id="portrait"
-              src={IMAGE_ASSETS.portrait}
               shape="circle"
               placeholder="portrait photo"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: '1px solid rgba(255,255,255,.2)' }}
@@ -74,25 +80,55 @@ export function Hero() {
         {t.heroSub}
       </p>
 
-      <a
-        href="#projects"
-        style={{
-          display: 'inline-block',
-          padding: '16px 40px',
-          borderRadius: 999,
-          fontWeight: 700,
-          fontSize: 15,
-          letterSpacing: '.04em',
-          color: '#fff',
-          background: 'linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%)',
-          boxShadow: ctaGlow,
-          transition: 'transform .3s,box-shadow .3s',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-3px) scale(1.03)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
-      >
-        {t.cta}
-      </a>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16 }}>
+        <a
+          href="#projects"
+          style={{
+            display: 'inline-block',
+            padding: '16px 40px',
+            borderRadius: 999,
+            fontWeight: 700,
+            fontSize: 15,
+            letterSpacing: '.04em',
+            color: '#fff',
+            background: 'linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%)',
+            boxShadow: ctaGlow,
+            transition: 'transform .3s,box-shadow .3s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-3px) scale(1.03)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
+        >
+          {t.cta}
+        </a>
+        {cvReady && (
+          <a
+            href={DOWNLOADS.cv}
+            download
+            style={{
+              display: 'inline-block',
+              padding: '16px 40px',
+              borderRadius: 999,
+              fontWeight: 700,
+              fontSize: 15,
+              letterSpacing: '.04em',
+              color: c.text,
+              background: c.glass,
+              border: `1px solid ${c.border}`,
+              transition: 'transform .3s,border-color .3s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px) scale(1.03)';
+              e.currentTarget.style.borderColor = '#B600A8';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.borderColor = c.border;
+            }}
+          >
+            {t.cvBtn}
+          </a>
+        )}
+      </div>
     </section>
   );
 }

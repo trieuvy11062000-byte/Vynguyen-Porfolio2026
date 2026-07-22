@@ -3,7 +3,6 @@ import { useInView } from 'framer-motion';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
 import { CarouselNav } from './CarouselNav';
-import { IMAGE_ASSETS } from '../data/imageAssets';
 import { SPD, LINKS, GAL } from '../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -82,7 +81,6 @@ export function SelectedProjects() {
                           <div key={g.id} style={{ flex: '0 0 100%', position: 'relative', aspectRatio: '16/10', background: '#16141c' }}>
                             <ImageSlot
                               id={`sp${i}-${g.id}`}
-                              src={IMAGE_ASSETS[`sp${i}-${g.id}`]}
                               placeholder={g.ph}
                               parallax={0.12}
                               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
@@ -295,10 +293,10 @@ export function SelectedProjects() {
                 </span>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <div style={{ position: 'relative', width: 72, height: 50, borderRadius: 8, overflow: 'hidden', border: '1px solid rgba(255,255,255,.12)' }}>
-                    <ImageSlot id={`sp${i}-hero`} src={IMAGE_ASSETS[`sp${i}-hero`]} placeholder=" " style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', fontSize: 0, pointerEvents: 'none' }} />
+                    <ImageSlot id={`sp${i}-hero`} placeholder=" " style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', fontSize: 0, pointerEvents: 'none' }} />
                   </div>
                   <div style={{ position: 'relative', width: 72, height: 50, borderRadius: 8, overflow: 'hidden', border: '1px solid rgba(255,255,255,.12)' }}>
-                    <ImageSlot id={`sp${i}-t0`} src={IMAGE_ASSETS[`sp${i}-t0`]} placeholder=" " style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', fontSize: 0, pointerEvents: 'none' }} />
+                    <ImageSlot id={`sp${i}-t0`} placeholder=" " style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', fontSize: 0, pointerEvents: 'none' }} />
                   </div>
                 </div>
                 <div style={{ flex: 1, minWidth: 220 }}>

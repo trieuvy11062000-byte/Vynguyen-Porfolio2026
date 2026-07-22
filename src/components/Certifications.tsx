@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
-import { IMAGE_ASSETS } from '../data/imageAssets';
 import { CERTS } from '../data/content';
 
 export function Certifications() {
@@ -63,7 +62,7 @@ export function Certifications() {
                 }}
               >
                 <span style={{ pointerEvents: 'none', flex: '0 0 92px', height: 66, borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,.12)', display: 'block' }}>
-                  <ImageSlot id={`cert-${idx}`} src={IMAGE_ASSETS[`cert-${idx}`]} fit="cover" placeholder="cert" style={{ width: '100%', height: '100%' }} />
+                  <ImageSlot id={`cert-${idx}`} fit="cover" placeholder="cert" style={{ width: '100%', height: '100%' }} />
                 </span>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <span style={{ fontWeight: 700, fontSize: 15 }}>{ce.n}</span>
@@ -129,7 +128,6 @@ export function Certifications() {
             <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
               <ImageSlot
                 id={`cert-${cert}`}
-                src={IMAGE_ASSETS[`cert-${cert}`]}
                 fit="contain"
                 placeholder="drop certificate image / PDF page"
                 style={{ width: '100%', height: 'min(60vh,440px)' }}

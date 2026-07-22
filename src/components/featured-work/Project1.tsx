@@ -3,7 +3,6 @@ import { useThemeLang } from '../../context/ThemeLangContext';
 import { ImageSlot } from '../ImageSlot';
 import { CarouselNav } from '../CarouselNav';
 import { ProjectHeader } from './ProjectHeader';
-import { IMAGE_ASSETS } from '../../data/imageAssets';
 import { VC, WS } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -46,33 +45,11 @@ export function Project1() {
                     <div style={{ position: 'relative', aspectRatio: '3/4' }}>
                       <ImageSlot
                         id={`p1v-${i}`}
-                        src={IMAGE_ASSETS[`p1v-${i}`]}
-                        placeholder="video thumbnail"
+                        placeholder="video thumbnail (ảnh hoặc video clip)"
                         parallax={0.07}
+                        playIcon={{ size: 44, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.3)', fontSize: 14, paddingLeft: 3 }}
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
                       />
-                      <div
-                        style={{
-                          position: 'absolute',
-                          left: '50%',
-                          top: '50%',
-                          transform: 'translate(-50%,-50%)',
-                          pointerEvents: 'none',
-                          width: 44,
-                          height: 44,
-                          borderRadius: '50%',
-                          background: 'rgba(255,255,255,.14)',
-                          backdropFilter: 'blur(8px)',
-                          border: '1px solid rgba(255,255,255,.3)',
-                          display: 'grid',
-                          placeItems: 'center',
-                          color: '#fff',
-                          fontSize: 14,
-                          paddingLeft: 3,
-                        }}
-                      >
-                        ▶
-                      </div>
                     </div>
                     <div
                       style={{
@@ -123,34 +100,11 @@ export function Project1() {
                 <div key={i} style={{ flex: '0 0 100%', position: 'relative', aspectRatio: '16/9' }}>
                   <ImageSlot
                     id={`p1w-${i}`}
-                    src={IMAGE_ASSETS[`p1w-${i}`]}
-                    placeholder="16:9 hero video frame"
+                    placeholder="16:9 hero video frame (ảnh hoặc video clip)"
                     parallax={0.1}
+                    playIcon={{ size: 72, background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.35)', fontSize: 24, paddingLeft: 5, boxShadow: '0 0 40px rgba(182,0,168,.5)' }}
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
                   />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      top: '50%',
-                      transform: 'translate(-50%,-50%)',
-                      pointerEvents: 'none',
-                      width: 72,
-                      height: 72,
-                      borderRadius: '50%',
-                      background: 'rgba(255,255,255,.12)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,.35)',
-                      display: 'grid',
-                      placeItems: 'center',
-                      color: '#fff',
-                      fontSize: 24,
-                      paddingLeft: 5,
-                      boxShadow: '0 0 40px rgba(182,0,168,.5)',
-                    }}
-                  >
-                    ▶
-                  </div>
                   <div
                     style={{
                       position: 'absolute',

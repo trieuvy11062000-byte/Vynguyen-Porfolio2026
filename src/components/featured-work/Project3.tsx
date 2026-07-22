@@ -3,7 +3,6 @@ import { useThemeLang } from '../../context/ThemeLangContext';
 import { ImageSlot } from '../ImageSlot';
 import { CarouselNav } from '../CarouselNav';
 import { ProjectHeader } from './ProjectHeader';
-import { IMAGE_ASSETS } from '../../data/imageAssets';
 import { DOCS } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -71,7 +70,7 @@ export function Project3() {
                   }}
                 >
                   <div style={{ flex: '0 0 64px', height: 84, borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,.12)' }}>
-                    <ImageSlot id={`p3-thumb-${i}`} src={IMAGE_ASSETS[`p3-thumb-${i}`]} placeholder="cover" style={{ width: '100%', height: '100%' }} />
+                    <ImageSlot id={`p3-thumb-${i}`} placeholder="cover" style={{ width: '100%', height: '100%' }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontWeight: 700, fontSize: 15 }}>{doc.n}</div>
@@ -129,9 +128,8 @@ export function Project3() {
                   <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                     <ImageSlot
                       id={`p3-show-${i}`}
-                      src={IMAGE_ASSETS[`p3-show-${i}`]}
                       fit="contain"
-                      placeholder={`${doc.n} — spread preview`}
+                      placeholder={`${doc.n} — spread preview (ảnh hoặc file PDF)`}
                       onRatio={(r) => setRatios((prev) => (prev[i] === r ? prev : { ...prev, [i]: r }))}
                       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
                     />
