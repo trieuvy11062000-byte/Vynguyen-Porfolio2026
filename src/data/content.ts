@@ -9,7 +9,7 @@ export const VC: VideoCard[] = [
   { t: '3CE Activation Recap', f: 'Reel + TikTok', v: '70K' },
   { t: 'Pop Mart Store Launch', f: 'TikTok', v: '18K' },
   { t: 'THISO Mall Event', f: 'Story', v: '40K' },
-  { t: 'Sarene 6.8 Teaser', f: 'TikTok', v: '49K' },
+  { t: 'Highlight gameplay', f: 'TikTok', v: '49K' },
 ];
 
 export interface WideSlide {
@@ -108,10 +108,10 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       short: 'Chiến dịch launch tích hợp — từ chiến lược đến sự kiện thực tế.',
     },
     {
-      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Hệ sinh thái nội dung', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
-      bg: 'Vận hành truyền thông cho trung tâm thương mại với nhiều brand activation lớn: 3CE, Pop Mart store launch tại THISO Mall Sala.',
+      badge: 'Brand / Content Ecosystem', title: 'THACO GROUP — Activation & Hệ sinh thái nội dung', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
+      bg: 'Vận hành truyền thông cho Khu đô thị Sala và trung tâm thương mại với nhiều brand activation lớn: 3CE, Pop Mart store launch tại THISO Mall Sala.',
       prob: 'Giữ nhịp nội dung đa kênh liên tục và đồng bộ thông điệp giữa tenant, agency và nội bộ — với nguồn lực giới hạn.',
-      roleB: ['Content Strategy đa nền tảng', 'Điều phối activation với tenant/agency', 'Quản lý ấn phẩm & timeline', 'Theo dõi & tối ưu hiệu quả'],
+      roleB: ['Content Strategy đa nền tảng', 'Lập kế hoạch & điều phối truyền thông activation với tenant, agency', 'Quản lý ấn phẩm & timeline', 'Theo dõi & tối ưu hiệu quả'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
       outs: ['16+ chiến dịch & sự kiện activation được thực thi', 'Hệ nội dung nhất quán trên social, website, email, ấn phẩm', 'Thúc đẩy nhận diện thương hiệu & lượng foot-traffic cho TTM'],
       mets: [{ v: '16+', l: 'Campaign thực hiện' }, { v: '5M+', l: 'Lượt tiếp cận trên Social (Reach)' }, { v: '80K+', l: 'Lượt tương tác nội dung (Engagement)' }, { v: '1.5M+', l: 'Lượt tiếp cận (Total Social Reach)' }],
@@ -127,6 +127,16 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       mets: [{ v: '+40%', l: 'Follower / 3 tháng' }, { v: '4k→6k', l: 'Quy mô cộng đồng' }, { v: '10–15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
       short: 'Tăng trưởng cộng đồng niche +40% trong 3 tháng, chuyển đổi 10–15%.',
     },
+    {
+      badge: 'AI Workflow / Marketing System', title: 'Hệ thống AI chấm điểm & Audit nội dung Social', time: '2026', role: 'Thiết kế hệ thống & Xây dựng Workflow AI', org: 'Freelance Project',
+      bg: 'Khối lượng nội dung social ngày càng lớn khiến việc đánh giá chất lượng bằng thủ công trở nên thiếu nhất quán, tốn thời gian và khó mở rộng khi quản lý nhiều chiến dịch.',
+      prob: 'Xây dựng một quy trình AI hỗ trợ chấm điểm nội dung theo bộ tiêu chí chuẩn, tự động phân tích chất lượng, phát hiện điểm cần cải thiện và chuẩn hóa quy trình audit cho đội ngũ Marketing.',
+      roleB: ['Thiết kế framework đánh giá nội dung', 'Xây dựng workflow chấm điểm hỗ trợ AI', 'Xây dựng dashboard audit HTML', 'Xác định tiêu chí đánh giá & hệ thống prompt'],
+      steps: ['Nhập nội dung', 'AI phân tích', 'Chấm điểm', 'Xuất báo cáo', 'Đề xuất tối ưu hóa'],
+      outs: ['Chuẩn hóa quy trình đánh giá nội dung Social', 'Dashboard HTML trực quan hỗ trợ Audit', 'Hệ thống AI tự động chấm điểm theo nhiều tiêu chí'],
+      mets: [{ v: '50+', l: 'Tiêu chí đánh giá' }, { v: '5', l: 'Chỉ số chấm điểm' }, { v: '80%', l: 'Thời gian tiết kiệm được' }, { v: '100%', l: 'Quy trình chuẩn hóa' }],
+      short: 'Thiết kế hệ thống AI hỗ trợ chấm điểm và Audit nội dung Social, giúp chuẩn hóa quy trình đánh giá và tăng tốc độ phân tích.',
+    }
   ],
   en: [
     {
@@ -140,10 +150,10 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       short: 'Integrated launch campaign — from strategy to on-ground event.',
     },
     {
-      badge: 'Brand / Content Ecosystem', title: 'THISO Retail — Activation & Content Ecosystem', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
-      bg: 'Ran communications for a retail mall with major brand activations: 3CE campaigns and the Pop Mart store launch at THISO Mall Sala.',
+      badge: 'Brand / Content Ecosystem', title: 'THACO GROUP — Activation & Content Ecosystem', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
+      bg: 'Ran communications for Sala Urban area and a retail mall with major brand activations: 3CE campaigns and the Pop Mart store launch at THISO Mall Sala.',
       prob: 'Sustain a continuous multi-channel content rhythm and keep messaging aligned across tenants, agencies and internal teams — with limited resources.',
-      roleB: ['Multi-platform content strategy', 'Activation coordination with tenants/agencies', 'Asset & timeline management', 'Performance monitoring & optimization'],
+      roleB: ['Multi-platform content strategy', 'Planned and coordinated marketing activation campaigns with tenants/agencies', 'Asset & timeline management', 'Performance monitoring & optimization'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
       outs: ['16+ campaigns & activation events executed', 'Consistent content system across social, web, email, print', 'Boosted brand recognition & foot traffic for THISO Mall'],
       mets: [{ v: '16+', l: 'Campaigns executed' }, { v: '5M+', l: 'Social Reach' }, { v: '80K+', l: 'Content Engagement' }, { v: '1.5M+', l: 'Total Social Reach' }],
@@ -159,6 +169,16 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       mets: [{ v: '+40%', l: 'Followers / 3 months' }, { v: '4k→6k', l: 'Community size' }, { v: '10–15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
       short: 'Niche community growth +40% in 3 months, 10–15% conversion.',
     },
+    {
+      badge: 'AI Workflow / Marketing System', title: 'AI-Powered Social Content Audit Framework', time: '2026', role: 'System Designer & Workflow Developer', org: 'Freelance Project',
+      bg: 'A growing volume of social media content made manual quality reviews inconsistent, time-consuming, and difficult to scale across multiple campaigns.',
+      prob: 'Design an AI-assisted workflow that standardizes content evaluation, automates scoring, and provides actionable recommendations while maintaining consistent assessment criteria.',
+      roleB: ['Designed the content evaluation framework', 'Developed AI-assisted scoring workflow', 'Built HTML audit dashboard', 'Defined evaluation criteria & prompt system'],
+      steps: ['Input Content', 'AI Analysis', 'Quality Scoring', 'Insight Report', 'Optimization'],
+      outs: ['Standardized content evaluation methodology', 'Interactive HTML dashboard with automated scoring', 'Consistent quality assessment across multiple content formats'],
+      mets: [{ v: '50+', l: 'Evaluation Criteria' }, { v: '5', l: 'Scoring Dimensions' }, { v: '80%', l: 'Review Time Saved' }, { v: '100%', l: 'Standardized Workflow' }],
+      short: 'Built an AI-assisted content audit system that standardizes evaluation and accelerates social content reviews.',
+    }  
   ],
 };
 
@@ -168,8 +188,9 @@ export interface CaseStudyLink {
 }
 export const LINKS: CaseStudyLink[][] = [
   [{ t: 'View Brochure', h: 'https://sareneresidences.vn/' }, { t: 'View Proposal', h: 'https://sarene-sala.vn/' }],
-  [{ t: 'View Website', h: 'https://thisoretail.com/' }, { t: 'View Social Media', h: 'https://www.facebook.com/THISOMall.SaLa' }],
+  [{ t: 'View Website', h: 'https://thisoretail.com/' }, { t: 'View Social Media', h: 'https://www.facebook.com/THISOMall.SaLa' }, { t: 'View Tiktok', h: 'https://www.tiktok.com/@thisomallsala' }],
   [{ t: 'View Social Media', h: 'https://www.facebook.com/Thuctinhtamhon' }],
+  [{ t: 'View Content Evaluator', h: '/content-evaluator.html' }],
 ];
 
 export interface GalleryItem {

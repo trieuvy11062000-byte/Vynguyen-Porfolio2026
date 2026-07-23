@@ -26,7 +26,7 @@ export function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '40px clamp(16px,4vw,64px) 60px',
+        padding: '120px clamp(16px,4vw,64px) 144px',
         position: 'relative',
       }}
     >
@@ -36,13 +36,19 @@ export function Hero() {
           fontWeight: 900,
           textTransform: 'uppercase',
           letterSpacing: '-.03em',
-          lineHeight: 0.95,
-          fontSize: 'clamp(36px,7.5vw,120px)',
+          lineHeight: 0.96,
+          fontSize: 'clamp(34px,7vw,118px)',
+          paddingTop: 24,
+          paddingBottom: 24,
+          maxWidth: 'min(100%, 1680px)',
+          width: '100%',
           backgroundImage: `linear-gradient(180deg,${gA} 0%,${gB} 100%)`,
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           color: 'transparent',
-          textWrap: 'balance',
+          textWrap: 'pretty',
+          overflowWrap: 'anywhere',
+          whiteSpace: 'normal',
         }}
       >
         {t.heroH}

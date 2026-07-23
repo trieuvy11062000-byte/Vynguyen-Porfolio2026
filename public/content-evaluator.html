@@ -1,0 +1,660 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1.5rem 0;max-width:900px}
+.section{margin-bottom:2rem}
+.section-header{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:8px;margin-bottom:1rem}
+.card{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.card-sub{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px}
+.badge-purple{background:#EEEDFE;color:#3C3489}
+.badge-teal{background:#E1F5EE;color:#085041}
+.badge-amber{background:#FAEEDA;color:#633806}
+.badge-red{background:#FCEBEB;color:#791F1F}
+.badge-blue{background:#E6F1FB;color:#0C447C}
+.badge-gray{background:#F1EFE8;color:#444441}
+@media(prefers-color-scheme:dark){
+.badge-purple{background:#26215C;color:#CECBF6}
+.badge-teal{background:#04342C;color:#9FE1CB}
+.badge-amber{background:#412402;color:#FAC775}
+.badge-red{background:#501313;color:#F7C1C1}
+.badge-blue{background:#042C53;color:#B5D4F4}
+.badge-gray{background:#2C2C2A;color:#D3D1C7}
+}
+.tab-row{display:flex;gap:4px;margin-bottom:1.25rem;flex-wrap:wrap}
+.tab{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.pane{display:none}.pane.active{display:block}
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.flow-step{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;flex:1;min-width:140px}
+.flow-step .step-num{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:2px}
+.flow-step .step-name{font-weight:500;color:var(--color-text-primary);font-size:13px}
+.flow-step .step-desc{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.arrow-icon{color:var(--color-text-secondary);font-size:18px;flex-shrink:0}
+.field-row{display:grid;grid-template-columns:180px 1fr 90px 90px;gap:12px;padding:10px 0;border-bottom:.5px solid var(--color-border-tertiary);align-items:start}
+.field-row:last-child{border-bottom:none}
+.field-header{display:grid;grid-template-columns:180px 1fr 90px 90px;gap:12px;padding:6px 0 8px;font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;border-bottom:.5px solid var(--color-border-secondary)}
+.fn{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.fd{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.ft{font-size:12px;color:var(--color-text-secondary);font-family:var(--font-mono)}
+.req{font-size:11px;font-weight:500}
+.req-y{color:#0F6E56}.req-n{color:#888780}
+.api-block{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px;font-size:12px;font-family:var(--font-mono);color:var(--color-text-primary);margin-top:8px;white-space:pre-wrap;word-break:break-all;line-height:1.7}
+.api-comment{color:var(--color-text-secondary)}
+.kv-row{display:flex;gap:12px;margin-bottom:8px;font-size:13px}
+.kv-key{color:var(--color-text-secondary);min-width:160px;flex-shrink:0}
+.kv-val{color:var(--color-text-primary);font-weight:500}
+.state-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem}
+.state-box{border-radius:var(--border-radius-md);padding:10px 14px;flex:1;min-width:110px;border:.5px solid var(--color-border-tertiary)}
+.state-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.state-desc{font-size:12px;color:var(--color-text-secondary)}
+.warn-box{background:#FAEEDA;border:.5px solid #EF9F27;border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:12px}
+@media(prefers-color-scheme:dark){.warn-box{background:#412402;color:#FAC775;border-color:#BA7517}}
+.info-box{background:#E6F1FB;border:.5px solid #378ADD;border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:#0C447C;margin-bottom:12px}
+@media(prefers-color-scheme:dark){.info-box{background:#042C53;color:#B5D4F4;border-color:#185FA5}}
+.criteria-card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:10px;background:var(--color-background-primary)}
+.criteria-id{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary);margin-bottom:2px}
+.criteria-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.criteria-q{font-size:13px;color:var(--color-text-secondary);font-style:italic;margin-bottom:8px}
+.criteria-fail{font-size:12px;color:#A32D2D;background:#FCEBEB;padding:4px 8px;border-radius:4px;margin-bottom:4px;display:inline-block}
+@media(prefers-color-scheme:dark){.criteria-fail{color:#F7C1C1;background:#501313}}
+.expand-btn{font-size:12px;color:var(--color-text-secondary);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px;border:none;background:none;margin-top:6px}
+.expand-content{display:none;margin-top:8px;padding-top:8px;border-top:.5px solid var(--color-border-tertiary)}
+.expand-content.open{display:block}
+.prompt-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;font-size:12px;color:var(--color-text-primary);font-family:var(--font-mono);line-height:1.7;margin-top:6px;white-space:pre-wrap}
+.arch-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.arch-row{grid-template-columns:1fr}.field-row,.field-header{grid-template-columns:1fr 1fr;}.field-row .ft,.field-row .req{display:none}}
+</style>
+
+<div class="wrap">
+<h2 style="sr-only">Bonario Content Evaluator — Technical Specification</h2>
+
+<div class="tab-row">
+  <button class="tab active" onclick="show('workflow')">Workflow</button>
+  <button class="tab" onclick="show('fields')">Data Fields</button>
+  <button class="tab" onclick="show('criteria')">Tiêu chí đánh giá</button>
+  <button class="tab" onclick="show('api')">API Schema</button>
+  <button class="tab" onclick="show('arch')">Kiến trúc hệ thống</button>
+</div>
+
+<!-- TAB 1: WORKFLOW -->
+<div id="pane-workflow" class="pane active">
+
+<div class="section">
+  <div class="section-header">Phân tích loại workflow</div>
+  <div class="card">
+    <div class="card-title">Pattern: Async Evaluation Pipeline</div>
+    <div class="card-sub" style="margin-bottom:10px">Đây là dạng <strong>Multi-step AI evaluation workflow</strong> — người dùng submit input, hệ thống chạy nhiều criteria song song (hoặc tuần tự), trả kết quả dần (progressive disclosure).</div>
+    <div>
+      <span class="badge badge-purple">Submit → Queue → Process → Score</span>
+      <span class="badge badge-teal">Brand consistency engine</span>
+      <span class="badge badge-amber">Async + polling hoặc WebSocket</span>
+      <span class="badge badge-blue">Multi-criteria scoring</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Luồng hoạt động (User Flow)</div>
+  <div class="flow-row">
+    <div class="flow-step">
+      <div class="step-num">01</div>
+      <div class="step-name">Nhập Caption</div>
+      <div class="step-desc">Textarea tự do, đếm từ realtime</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">02</div>
+      <div class="step-name">Chọn Cluster</div>
+      <div class="step-desc">Dropdown: Pillar 1, 2, 3…</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">03</div>
+      <div class="step-name">Chọn Mục tiêu</div>
+      <div class="step-desc">Dropdown: Authority, Awareness…</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">04</div>
+      <div class="step-name">Upload Layout</div>
+      <div class="step-desc">Tùy chọn, PNG/JPG/WEBP ≤5MB</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step" style="border-color:#0F6E56">
+      <div class="step-num">05</div>
+      <div class="step-name">Submit → Chờ</div>
+      <div class="step-desc">Polling / stream kết quả</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:1.5rem">System Flow (Backend)</div>
+  <div class="flow-row">
+    <div class="flow-step">
+      <div class="step-num">A</div>
+      <div class="step-name">Validate input</div>
+      <div class="step-desc">Word count, file type, required fields</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">B</div>
+      <div class="step-name">Enqueue job</div>
+      <div class="step-desc">Tạo job_id, status=PENDING</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">C</div>
+      <div class="step-name">AI evaluate</div>
+      <div class="step-desc">Gọi LLM API với từng criteria</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step">
+      <div class="step-num">D</div>
+      <div class="step-name">Score & aggregate</div>
+      <div class="step-desc">Tổng hợp, tính Brand Fit %</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="flow-step" style="border-color:#0F6E56">
+      <div class="step-num">E</div>
+      <div class="step-name">Return result</div>
+      <div class="step-desc">PASS / FAIL + evidence per criteria</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:1.5rem">Job States</div>
+  <div class="state-row">
+    <div class="state-box" style="background:#FAEEDA;border-color:#EF9F27">
+      <div class="state-label" style="color:#633806">PENDING</div>
+      <div class="state-desc" style="color:#633806">Đang xếp hàng, chưa bắt đầu</div>
+    </div>
+    <div class="state-box" style="background:#E6F1FB;border-color:#378ADD">
+      <div class="state-label" style="color:#0C447C">PROCESSING</div>
+      <div class="state-desc" style="color:#0C447C">AI đang phân tích từng criteria</div>
+    </div>
+    <div class="state-box" style="background:#E1F5EE;border-color:#1D9E75">
+      <div class="state-label" style="color:#085041">COMPLETED</div>
+      <div class="state-desc" style="color:#085041">Kết quả đầy đủ, có thể hiển thị</div>
+    </div>
+    <div class="state-box" style="background:#FCEBEB;border-color:#E24B4A">
+      <div class="state-label" style="color:#A32D2D">FAILED</div>
+      <div class="state-desc" style="color:#A32D2D">Lỗi hệ thống hoặc validation</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- TAB 2: DATA FIELDS -->
+<div id="pane-fields" class="pane">
+
+<div class="section">
+  <div class="section-header">Input Fields — Dữ liệu người dùng nhập</div>
+  <div class="field-header">
+    <div>Tên trường</div>
+    <div>Mô tả & validation</div>
+    <div>Kiểu dữ liệu</div>
+    <div>Bắt buộc</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">caption_text</div>
+    </div>
+    <div>
+      <div class="fd">Nội dung caption bài đăng mạng xã hội. Đếm từ realtime hiển thị phía góc phải. Không giới hạn ký tự nhưng UI cần hiển thị cảnh báo nếu &lt;50 từ hoặc &gt;500 từ.</div>
+    </div>
+    <div class="ft">string (textarea)</div>
+    <div class="req req-y">✓ Bắt buộc</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">content_cluster</div>
+    </div>
+    <div>
+      <div class="fd">Loại nội dung theo pillar chiến lược thương hiệu. Giá trị hợp lệ: <span class="badge badge-gray">pillar_1_showcase</span><span class="badge badge-gray">pillar_2_education</span><span class="badge badge-gray">pillar_3_lifestyle</span>. Ảnh hưởng đến prompt template gửi AI.</div>
+    </div>
+    <div class="ft">enum (dropdown)</div>
+    <div class="req req-y">✓ Bắt buộc</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">content_goal</div>
+    </div>
+    <div>
+      <div class="fd">Mục tiêu bài đăng, dùng để chọn criteria set phù hợp. Giá trị hợp lệ: <span class="badge badge-gray">authority</span><span class="badge badge-gray">awareness</span><span class="badge badge-gray">conversion</span><span class="badge badge-gray">engagement</span>. Kết hợp với cluster để quyết định trọng số scoring.</div>
+    </div>
+    <div class="ft">enum (dropdown)</div>
+    <div class="req req-y">✓ Bắt buộc</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">layout_images[]</div>
+    </div>
+    <div>
+      <div class="fd">Ảnh thiết kế layout đính kèm. Tối đa 20 ảnh, mỗi ảnh ≤5MB. Định dạng: PNG, JPG, WEBP. Upload lên object storage (S3/GCS), lưu URL vào job. AI nhận URL để đối chiếu text vs visual.</div>
+    </div>
+    <div class="ft">File[] → URL[]</div>
+    <div class="req req-n">– Tùy chọn</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">brand_profile_id</div>
+    </div>
+    <div>
+      <div class="fd">ID thương hiệu đang được đánh giá. Dùng để load đúng Brand Standard (voice, tone, keywords, cấm kỵ). Frontend lấy từ context auth user, không để user tự nhập.</div>
+    </div>
+    <div class="ft">UUID (hidden)</div>
+    <div class="req req-y">✓ Auto-inject</div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <div class="fn">evaluator_model</div>
+    </div>
+    <div>
+      <div class="fd">Model AI sử dụng để đánh giá. Hiển thị trong UI header (e.g. "MINIMAX M3 ACTIVE"). Backend cấu hình, frontend chỉ hiển thị không cho edit. Phục vụ audit trail.</div>
+    </div>
+    <div class="ft">string (config)</div>
+    <div class="req req-y">✓ System</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Output Fields — Kết quả hệ thống trả về</div>
+  <div class="field-header">
+    <div>Tên trường</div>
+    <div>Mô tả</div>
+    <div>Kiểu dữ liệu</div>
+    <div>Nguồn</div>
+  </div>
+
+  <div class="field-row">
+    <div><div class="fn">evaluation_id</div></div>
+    <div><div class="fd">UUID của job đánh giá. Frontend polling /api/evaluations/{id}/status mỗi 2–3 giây cho đến khi COMPLETED.</div></div>
+    <div class="ft">UUID</div>
+    <div class="req req-y">Generated</div>
+  </div>
+
+  <div class="field-row">
+    <div><div class="fn">brand_fit_score</div></div>
+    <div><div class="fd">Điểm tổng hợp 0–100% thể hiện mức độ phù hợp thương hiệu. Tính theo trung bình có trọng số của từng criteria score. Hiển thị dạng vòng tròn progress (xem UI mẫu: 20%).</div></div>
+    <div class="ft">integer (0–100)</div>
+    <div class="req req-y">Computed</div>
+  </div>
+
+  <div class="field-row">
+    <div><div class="fn">overall_status</div></div>
+    <div><div class="fd">Kết luận tổng: <span class="badge badge-teal">PASS</span> nếu brand_fit_score ≥ threshold (cấu hình per brand), <span class="badge badge-red">FAIL</span> nếu ngược lại. Cũng lưu count "X ĐẠT / Y SỬA".</div></div>
+    <div class="ft">enum + counts</div>
+    <div class="req req-y">Computed</div>
+  </div>
+
+  <div class="field-row">
+    <div><div class="fn">criteria_results[]</div></div>
+    <div><div class="fd">Mảng kết quả từng tiêu chí. Mỗi phần tử gồm: criteria_id, status (PASS/FAIL), evidence (trích dẫn từ caption), suggestion (gợi ý sửa). Render dạng accordion card trong UI.</div></div>
+    <div class="ft">Array&lt;CriteriaResult&gt;</div>
+    <div class="req req-y">AI output</div>
+  </div>
+
+  <div class="field-row">
+    <div><div class="fn">processing_log</div></div>
+    <div><div class="fd">Log từng bước xử lý với timestamp. Dùng cho debug và audit. Không hiển thị user, chỉ admin xem.</div></div>
+    <div class="ft">JSON log</div>
+    <div class="req req-y">System</div>
+  </div>
+</div>
+
+</div>
+
+<!-- TAB 3: CRITERIA -->
+<div id="pane-criteria" class="pane">
+
+<div class="info-box">Mỗi tiêu chí có prompt riêng gửi AI. AI trả về: status (PASS/FAIL) + evidence (trích dẫn) + suggestion. Danh sách này mở rộng được theo brand.</div>
+
+<div class="criteria-card">
+  <div class="criteria-id">CRIT_001 · Cluster: All · Weight: 1.5x</div>
+  <div class="criteria-name">Education Depth</div>
+  <div class="criteria-q">"Sau khi đọc, người đọc rút ra được điều gì cụ thể về vật liệu hoặc cách ứng dụng trong không gian?"</div>
+  <span class="criteria-fail">FAIL nếu: chỉ mô tả cảm xúc, khen đẹp, hoặc quá ngắn để tạo giá trị</span>
+  <button class="expand-btn" onclick="toggleExpand(this)"><i class="ti ti-chevron-down" aria-hidden="true"></i> Xem prompt mẫu</button>
+  <div class="expand-content">
+    <div class="prompt-box">Bạn là chuyên gia đánh giá nội dung thương hiệu Bonario.
+Đọc caption sau và trả lời:
+1. Người đọc học được điều gì cụ thể? (vật liệu, ứng dụng, kỹ thuật)
+2. Nội dung có đi quá mức mô tả cảm xúc không?
+
+Caption: {caption_text}
+Cluster: {content_cluster}
+
+Trả về JSON:
+{
+  "status": "PASS" | "FAIL",
+  "evidence": "trích dẫn từ caption",
+  "suggestion": "gợi ý sửa nếu FAIL"
+}</div>
+  </div>
+</div>
+
+<div class="criteria-card">
+  <div class="criteria-id">CRIT_002 · Cluster: Showcase, Education · Weight: 1.2x</div>
+  <div class="criteria-name">Material Authority</div>
+  <div class="criteria-q">"Caption có thể hiện kiến thức chuyên sâu về vật liệu — tên kỹ thuật, đặc tính, ứng dụng phù hợp?"</div>
+  <span class="criteria-fail">FAIL nếu: mô tả mơ hồ, không có thông tin kỹ thuật, chỉ dùng tính từ cảm tính</span>
+  <button class="expand-btn" onclick="toggleExpand(this)"><i class="ti ti-chevron-down" aria-hidden="true"></i> Xem prompt mẫu</button>
+  <div class="expand-content">
+    <div class="prompt-box">Đánh giá mức độ authority về vật liệu trong caption:
+- Có tên kỹ thuật không? (e.g. "họa tiết Jacquard", "bề mặt matte vinyl")
+- Có thông số sản phẩm không? (e.g. mã sản phẩm, bộ sưu tập)
+- Có giải thích ứng dụng không gian không?
+
+Caption: {caption_text}
+Trả về JSON: { "status", "evidence", "suggestion" }</div>
+  </div>
+</div>
+
+<div class="criteria-card">
+  <div class="criteria-id">CRIT_003 · Cluster: All · Weight: 1.0x</div>
+  <div class="criteria-name">Brand Voice Consistency</div>
+  <div class="criteria-q">"Giọng văn có đúng với chuẩn thương hiệu — không quá thân mật, không quá cứng nhắc, chuyên gia nhưng gần gũi?"</div>
+  <span class="criteria-fail">FAIL nếu: dùng ngôn ngữ quảng cáo sáo rỗng, emoji quá nhiều, hoặc giọng không nhất quán</span>
+  <button class="expand-btn" onclick="toggleExpand(this)"><i class="ti ti-chevron-down" aria-hidden="true"></i> Xem prompt mẫu</button>
+  <div class="expand-content">
+    <div class="prompt-box">Brand Standard của {brand_name}:
+- Giọng văn: {brand_voice_description}
+- Từ khóa cần có: {required_keywords}
+- Từ/cụm cấm: {forbidden_phrases}
+
+Caption cần kiểm tra: {caption_text}
+
+Đánh giá: { "status", "evidence", "suggestion" }</div>
+  </div>
+</div>
+
+<div class="criteria-card">
+  <div class="criteria-id">CRIT_004 · Cluster: Showcase · Weight: 1.0x</div>
+  <div class="criteria-name">CTA Quality</div>
+  <div class="criteria-q">"CTA có rõ ràng, đúng với mục tiêu conversion, và tạo được động lực hành động?"</div>
+  <span class="criteria-fail">FAIL nếu: không có CTA, CTA mơ hồ, hoặc CTA không khớp với goal "Authority/Conversion"</span>
+  <button class="expand-btn" onclick="toggleExpand(this)"><i class="ti ti-chevron-down" aria-hidden="true"></i> Xem prompt mẫu</button>
+  <div class="expand-content">
+    <div class="prompt-box">Goal bài đăng: {content_goal}
+Caption: {caption_text}
+
+Kiểm tra CTA:
+- Có CTA rõ ràng không?
+- CTA có phù hợp với goal "{content_goal}" không?
+- Người đọc biết phải làm gì tiếp theo không?
+
+Trả về: { "status", "evidence", "suggestion" }</div>
+  </div>
+</div>
+
+<div class="criteria-card">
+  <div class="criteria-id">CRIT_005 · Cluster: All · Weight: 0.8x · Requires: image</div>
+  <div class="criteria-name">Text–Visual Alignment</div>
+  <div class="criteria-q">"Caption có mô tả đúng và bổ sung ý nghĩa cho hình ảnh layout đính kèm?"</div>
+  <span class="criteria-fail">FAIL nếu: caption mô tả thứ không có trong ảnh, hoặc ảnh và text mâu thuẫn nhau</span>
+  <button class="expand-btn" onclick="toggleExpand(this)"><i class="ti ti-chevron-down" aria-hidden="true"></i> Xem prompt mẫu</button>
+  <div class="expand-content">
+    <div class="prompt-box">Đây là caption: {caption_text}
+Đây là ảnh layout: [image_url_1], [image_url_2]
+
+Phân tích:
+1. Caption có mô tả đúng nội dung trong ảnh không?
+2. Có mâu thuẫn nào giữa text và visual không?
+3. Caption có bổ sung thông tin mà ảnh chưa nói rõ không?
+
+Trả về: { "status", "evidence", "suggestion" }
+Lưu ý: nếu không có ảnh → status: "SKIPPED"</div>
+  </div>
+</div>
+
+</div>
+
+<!-- TAB 4: API SCHEMA -->
+<div id="pane-api" class="pane">
+
+<div class="section">
+  <div class="section-header">Endpoint: Tạo evaluation mới</div>
+  <div class="api-block"><span class="api-comment">POST /api/v1/evaluations</span>
+Content-Type: multipart/form-data
+Authorization: Bearer {token}
+
+Body (form-data):
+  caption_text    : string (required)
+  content_cluster : "pillar_1_showcase" | "pillar_2_education" | "pillar_3_lifestyle"
+  content_goal    : "authority" | "awareness" | "conversion" | "engagement"
+  layout_images[] : File[] (optional, max 20, ≤5MB each)
+
+Response 202 Accepted:
+{
+  "evaluation_id": "uuid-v4",
+  "status":        "PENDING",
+  "created_at":    "2024-01-15T10:30:00Z",
+  "poll_url":      "/api/v1/evaluations/{id}/status"
+}</div>
+</div>
+
+<div class="section">
+  <div class="section-header">Endpoint: Polling status</div>
+  <div class="api-block"><span class="api-comment">GET /api/v1/evaluations/{evaluation_id}/status</span>
+Authorization: Bearer {token}
+
+Response (PROCESSING):
+{
+  "evaluation_id":   "uuid-v4",
+  "status":          "PROCESSING",
+  "brand_fit_score": 20,
+  "criteria_results": [
+    {
+      "criteria_id":   "CRIT_001",
+      "criteria_name": "Education Depth",
+      "status":        "SCANNING",  <span class="api-comment">// SCANNING | PASS | FAIL</span>
+      "evidence":      null,
+      "suggestion":    null
+    }
+  ]
+}
+
+Response (COMPLETED):
+{
+  "evaluation_id":   "uuid-v4",
+  "status":          "COMPLETED",
+  "brand_fit_score": 72,
+  "overall_pass":    true,
+  "pass_count":      4,
+  "fail_count":      1,
+  "criteria_results": [
+    {
+      "criteria_id":   "CRIT_001",
+      "criteria_name": "Education Depth",
+      "status":        "PASS",
+      "evidence":      "\"Họa tiết 333206 - 333214 với kết cấu 3D...\"",
+      "suggestion":    null
+    },
+    {
+      "criteria_id":   "CRIT_002",
+      "criteria_name": "Material Authority",
+      "status":        "FAIL",
+      "evidence":      "Không có mô tả kỹ thuật vật liệu",
+      "suggestion":    "Thêm thông tin về chất liệu, độ bền, ứng dụng không gian phù hợp"
+    }
+  ],
+  "completed_at": "2024-01-15T10:30:18Z"
+}</div>
+</div>
+
+<div class="section">
+  <div class="section-header">Frontend polling logic (pseudo-code)</div>
+  <div class="api-block"><span class="api-comment">// Frontend gọi sau khi submit</span>
+async function pollEvaluation(evaluationId) {
+  const INTERVAL_MS  = 2500;
+  const MAX_ATTEMPTS = 60; <span class="api-comment">// timeout sau 2.5 phút</span>
+  let attempts = 0;
+
+  return new Promise((resolve, reject) => {
+    const interval = setInterval(async () => {
+      attempts++;
+      const res  = await fetch(`/api/v1/evaluations/${evaluationId}/status`);
+      const data = await res.json();
+
+      updateUI(data); <span class="api-comment">// cập nhật progress, từng criteria card</span>
+
+      if (data.status === "COMPLETED" || data.status === "FAILED") {
+        clearInterval(interval);
+        resolve(data);
+      }
+      if (attempts >= MAX_ATTEMPTS) {
+        clearInterval(interval);
+        reject(new Error("Evaluation timeout"));
+      }
+    }, INTERVAL_MS);
+  });
+}</div>
+</div>
+
+<div class="section">
+  <div class="section-header">Lưu ý tích hợp cho CNTT</div>
+  <div class="card">
+    <div class="kv-row"><div class="kv-key">File upload</div><div class="kv-val">Upload ảnh lên S3/GCS trước, nhận presigned URL, gửi URL vào API — không gửi binary trực tiếp qua LLM API</div></div>
+    <div class="kv-row"><div class="kv-key">LLM call strategy</div><div class="kv-val">Chạy các criteria song song (Promise.all) để giảm latency. Criteria cần ảnh chạy sau khi text-only xong</div></div>
+    <div class="kv-row"><div class="kv-key">Rate limit</div><div class="kv-val">Giới hạn 10 evaluation/user/giờ. Queue với BullMQ hoặc tương đương</div></div>
+    <div class="kv-row"><div class="kv-key">Brand config</div><div class="kv-key">Lưu brand_standard (voice, forbidden_phrases, keywords) trong DB, inject vào prompt khi gọi AI. Không hardcode</div></div>
+    <div class="kv-row"><div class="kv-key">Audit trail</div><div class="kv-val">Lưu toàn bộ prompt + response AI vào evaluation_log cho mỗi criteria. Cần cho debug và tuning</div></div>
+    <div class="kv-row"><div class="kv-key">Alternative: SSE</div><div class="kv-val">Thay polling bằng Server-Sent Events (EventSource API) để push update realtime — ít request hơn, UX tốt hơn</div></div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 5: KIẾN TRÚC -->
+<div id="pane-arch" class="pane">
+
+<div class="section">
+  <div class="section-header">Tech stack đề xuất</div>
+  <div class="arch-row">
+    <div class="card">
+      <div class="card-title">Frontend</div>
+      <div style="margin-top:8px">
+        <span class="badge badge-blue">Next.js / React</span>
+        <span class="badge badge-blue">React Query (polling)</span>
+        <span class="badge badge-blue">Zustand (state)</span>
+        <span class="badge badge-gray">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Backend API</div>
+      <div style="margin-top:8px">
+        <span class="badge badge-purple">Node.js + Fastify</span>
+        <span class="badge badge-purple">hoặc Python FastAPI</span>
+        <span class="badge badge-gray">REST hoặc tRPC</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Queue / Worker</div>
+      <div style="margin-top:8px">
+        <span class="badge badge-amber">BullMQ + Redis</span>
+        <span class="badge badge-amber">hoặc Celery + Redis</span>
+        <span class="badge badge-gray">Worker pool</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">AI / Storage</div>
+      <div style="margin-top:8px">
+        <span class="badge badge-teal">OpenAI / Anthropic API</span>
+        <span class="badge badge-teal">S3 / GCS (ảnh)</span>
+        <span class="badge badge-gray">PostgreSQL (results)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Database schema (các bảng chính)</div>
+  <div class="api-block"><span class="api-comment">-- Bảng lưu kết quả evaluation</span>
+evaluations (
+  id              UUID PRIMARY KEY,
+  user_id         UUID,
+  brand_id        UUID,
+  caption_text    TEXT,
+  content_cluster VARCHAR(50),
+  content_goal    VARCHAR(50),
+  layout_urls     TEXT[],          <span class="api-comment">-- S3 URLs</span>
+  status          VARCHAR(20),     <span class="api-comment">-- PENDING|PROCESSING|COMPLETED|FAILED</span>
+  brand_fit_score INTEGER,
+  overall_pass    BOOLEAN,
+  pass_count      INTEGER,
+  fail_count      INTEGER,
+  model_used      VARCHAR(100),
+  created_at      TIMESTAMP,
+  completed_at    TIMESTAMP
+)
+
+<span class="api-comment">-- Kết quả từng tiêu chí</span>
+criteria_results (
+  id              UUID PRIMARY KEY,
+  evaluation_id   UUID REFERENCES evaluations(id),
+  criteria_id     VARCHAR(20),
+  criteria_name   VARCHAR(100),
+  status          VARCHAR(20),     <span class="api-comment">-- SCANNING|PASS|FAIL|SKIPPED</span>
+  evidence        TEXT,
+  suggestion      TEXT,
+  raw_prompt      TEXT,            <span class="api-comment">-- audit trail</span>
+  raw_response    TEXT,            <span class="api-comment">-- audit trail</span>
+  processing_ms   INTEGER,
+  created_at      TIMESTAMP
+)
+
+<span class="api-comment">-- Config thương hiệu</span>
+brand_standards (
+  brand_id         UUID PRIMARY KEY,
+  brand_name       VARCHAR(100),
+  voice_description TEXT,
+  required_keywords TEXT[],
+  forbidden_phrases TEXT[],
+  score_threshold   INTEGER,       <span class="api-comment">-- % tối thiểu để PASS</span>
+  criteria_weights  JSONB          <span class="api-comment">-- override trọng số per brand</span>
+)</div>
+</div>
+
+<div class="section">
+  <div class="section-header">Checklist MVP cho CNTT</div>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">Auth + brand context</span></div>
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">POST /evaluations endpoint</span></div>
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">Async queue + worker</span></div>
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">GET /status polling</span></div>
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">Criteria evaluator (≥3 criteria)</span></div>
+      <div><span class="badge badge-teal">✓ Must have</span> <span style="font-size:13px">Score aggregation logic</span></div>
+      <div><span class="badge badge-amber">~ Nice to have</span> <span style="font-size:13px">Image upload + vision API</span></div>
+      <div><span class="badge badge-amber">~ Nice to have</span> <span style="font-size:13px">SSE thay polling</span></div>
+      <div><span class="badge badge-amber">~ Nice to have</span> <span style="font-size:13px">Compare tab (lịch sử)</span></div>
+      <div><span class="badge badge-gray">Later</span> <span style="font-size:13px">Custom criteria per brand</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function show(tab) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('pane-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleExpand(btn) {
+  const content = btn.nextElementSibling;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  btn.querySelector('i').style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+</script>

@@ -12,7 +12,7 @@ Trong VS Code, menu Terminal → New Terminal, gõ:
 ```
 npm run dev
 ```
-Rồi mở trình duyệt vào `http://localhost:5173`. Từ đây, mỗi lần bạn sửa file và nhấn Lưu, trang **tự cập nhật ngay lập tức** — không cần chạy lại lệnh, không cần build. Muốn tắt thì bấm `Ctrl+C` trong terminal.
+Rồi mở trình duyệt vào `http://localhost:5177`. Từ đây, mỗi lần bạn sửa file và nhấn Lưu, trang **tự cập nhật ngay lập tức** — không cần chạy lại lệnh, không cần build. Muốn tắt thì bấm `Ctrl+C` trong terminal.
 
 **Bước 3 — Đưa thay đổi lên web thật (sau khi đã deploy Vercel):**
 Trong terminal, gõ lần lượt 3 lệnh:

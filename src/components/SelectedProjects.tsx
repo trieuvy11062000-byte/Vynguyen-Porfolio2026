@@ -117,45 +117,6 @@ export function SelectedProjects() {
                   {/* Left: gallery */}
                   <div>
                     <CaseStudyGallery projectIndex={i} spg={spg} />
-                    <CarouselNav
-                      onPrev={() => setSpg((s) => clamp(s - 1, 0, GAL.length - 1))}
-                      onNext={() => setSpg((s) => clamp(s + 1, 0, GAL.length - 1))}
-                      count={`${spg + 1} / ${GAL.length}`}
-                      dots={GAL.map((_, gi) => ({ active: gi === spg, onClick: () => setSpg(gi) }))}
-                    />
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 16 }}>
-                      {LINKS[i].map((lk) => (
-                        <a
-                          key={lk.t}
-                          href={lk.h}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 8,
-                            padding: '10px 18px',
-                            borderRadius: 999,
-                            border: '1px solid rgba(255,255,255,.18)',
-                            background: 'rgba(255,255,255,.06)',
-                            backdropFilter: 'blur(8px)',
-                            fontSize: 13,
-                            fontWeight: 600,
-                            transition: 'border-color .3s,box-shadow .3s',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = '#B600A8';
-                            e.currentTarget.style.boxShadow = '0 0 18px rgba(182,0,168,.35)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255,255,255,.18)';
-                            e.currentTarget.style.boxShadow = 'none';
-                          }}
-                        >
-                          {lk.t} <span style={{ fontSize: 11, opacity: 0.7 }}>↗</span>
-                        </a>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Right: case study details */}
@@ -185,13 +146,54 @@ export function SelectedProjects() {
                         gap: '8px 22px',
                         fontSize: 11,
                         color: '#98A4B0',
-                        paddingBottom: 18,
-                        borderBottom: '1px solid rgba(255,255,255,.1)',
-                        marginBottom: 20,
+                        paddingBottom: 12,
+                        borderBottom: '1px solid rgba(255,255,255,.08)',
+                        marginBottom: 14,
                       }}
                     >
                       <span>◆ {p.role}</span>
                       <span>▣ {p.org}</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18 }}>
+                      <CarouselNav
+                        onPrev={() => setSpg((s) => clamp(s - 1, 0, GAL.length - 1))}
+                        onNext={() => setSpg((s) => clamp(s + 1, 0, GAL.length - 1))}
+                        count={`${spg + 1} / ${GAL.length}`}
+                        dots={GAL.map((_, gi) => ({ active: gi === spg, onClick: () => setSpg(gi) }))}
+                      />
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                        {LINKS[i].map((lk) => (
+                          <a
+                            key={lk.t}
+                            href={lk.h}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              padding: '10px 18px',
+                              borderRadius: 999,
+                              border: '1px solid rgba(255,255,255,.18)',
+                              background: 'rgba(255,255,255,.06)',
+                              backdropFilter: 'blur(8px)',
+                              fontSize: 13,
+                              fontWeight: 600,
+                              transition: 'border-color .3s,box-shadow .3s',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.borderColor = '#B600A8';
+                              e.currentTarget.style.boxShadow = '0 0 18px rgba(182,0,168,.35)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.borderColor = 'rgba(255,255,255,.18)';
+                              e.currentTarget.style.boxShadow = 'none';
+                            }}
+                          >
+                            {lk.t} <span style={{ fontSize: 11, opacity: 0.7 }}>↗</span>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 20, marginBottom: 24 }}>
                       <div>

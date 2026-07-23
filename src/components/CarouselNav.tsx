@@ -24,7 +24,7 @@ const btnStyle: React.CSSProperties = {
 /** Standard fixed circular prev/next + optional dots + mono counter, identical across all carousels. */
 export function CarouselNav({ onPrev, onNext, count, dots }: CarouselNavProps) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, marginTop: 20 }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 12, marginTop: 0 }}>
       <button
         onClick={onPrev}
         style={btnStyle}
