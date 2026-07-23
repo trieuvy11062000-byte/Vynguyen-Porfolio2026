@@ -35,12 +35,17 @@ export interface DocItem {
   tag: string;
 }
 export const DOCS: DocItem[] = [
-  { n: 'Product Catalogue', p: '32', tag: 'Brand Communication' },
-  { n: 'Sales Guide', p: '24', tag: 'Sales Enablement' },
-  { n: 'Product Guideline', p: '18', tag: 'Brand System' },
-  { n: 'Brochure', p: '12', tag: 'Marketing Collateral' },
+  { n: 'Product Catalogue', p: '15', tag: 'Brand Communication' },
+  { n: 'Sales Guide', p: '8', tag: 'Sales Enablement' },
+  { n: 'Product Guideline', p: '5', tag: 'Brand System' },
+  { n: 'Brochure', p: '1', tag: 'Marketing Collateral' },
   // Presentation Deck hidden until a real asset is provided (see NOI-DUNG.md)
 ];
+
+// Number of pre-rendered page images per document (/assets/p3-doc-{i}-p{n}.jpg).
+// Must match the files generated from each source PDF — regenerate the images
+// when a PDF changes (see NOI-DUNG.md).
+export const DOC_PAGE_COUNTS: number[] = [15, 8, 5, 1];
 
 export interface CertItem {
   n: string;

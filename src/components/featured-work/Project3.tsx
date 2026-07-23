@@ -3,45 +3,85 @@ import { useThemeLang } from '../../context/ThemeLangContext';
 import { ImageSlot } from '../ImageSlot';
 import { CarouselNav } from '../CarouselNav';
 import { ProjectHeader } from './ProjectHeader';
-import { DOCS } from '../../data/content';
-import { DOWNLOADS } from '../../data/mediaAssets';
-import { useFileExists } from '../../hooks/useFileExists';
+import { DOCS, DOC_PAGE_COUNTS } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 const DEFAULT_RATIO = 16 / 10;
 
-function ViewFullPdfLink({ index }: { index: number }) {
-  const url = DOWNLOADS.p3Doc(index);
-  const ready = useFileExists(url);
-  if (!ready) return null;
+/**
+ * Fullscreen in-page reader over the pre-rendered page images
+ * (/assets/p3-doc-{i}-p{n}.jpg) — browser PDF plugins are unreliable in
+ * embedded/preview contexts (blank tab), so the document is shown as a
+ * scrollable column of page images instead.
+ */
+function DocReader({ docIndex, onClose }: { docIndex: number; onClose: () => void }) {
+  const pageCount = DOC_PAGE_COUNTS[docIndex] ?? 0;
   return (
-    // download (not target=_blank) — embedded/preview browsers without a PDF
-    // viewer plugin render an opened PDF tab as a blank page
-    <a
-      href={url}
-      download
-      onClick={(e) => e.stopPropagation()}
+    <div
+      onClick={onClose}
       style={{
-        position: 'absolute',
-        right: 16,
-        top: 12,
-        fontSize: 11,
-        fontWeight: 600,
-        padding: '5px 12px',
-        borderRadius: 999,
-        background: 'rgba(12,12,12,.55)',
-        color: '#D7E2EA',
-        backdropFilter: 'blur(6px)',
+        position: 'fixed',
+        inset: 0,
+        zIndex: 200,
+        background: 'rgba(6,6,8,.85)',
+        backdropFilter: 'blur(10px)',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 'clamp(12px,3vw,32px)',
       }}
     >
-      Tải PDF đầy đủ ↓
-    </a>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: 14, maxWidth: 960, width: '100%', marginInline: 'auto' }}>
+        <div style={{ fontWeight: 800, fontSize: 17, color: '#D7E2EA' }}>{DOCS[docIndex].n}</div>
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          style={{
+            cursor: 'pointer',
+            border: '1px solid rgba(255,255,255,.2)',
+            background: 'rgba(255,255,255,.06)',
+            color: '#D7E2EA',
+            borderRadius: 999,
+            width: 34,
+            height: 34,
+            fontSize: 14,
+            flex: '0 0 auto',
+          }}
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        className="thin-scroll"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          maxWidth: 960,
+          width: '100%',
+          marginInline: 'auto',
+          borderRadius: 16,
+          border: '1px solid rgba(255,255,255,.14)',
+          background: '#101216',
+        }}
+      >
+        {Array.from({ length: pageCount }, (_, n) => (
+          <img
+            key={n}
+            src={`/assets/p3-doc-${docIndex}-p${n}.jpg`}
+            alt={`${DOCS[docIndex].n} — trang ${n + 1}`}
+            loading="lazy"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
 export function Project3() {
   const { t, glow, heroGlow } = useThemeLang();
   const [p3, setP3] = useState(0);
+  const [reader, setReader] = useState<number | null>(null);
   const [ratios, setRatios] = useState<Record<number, number>>({});
   const [viewerHeight, setViewerHeight] = useState(420);
   const listRef = useRef<HTMLDivElement>(null);
@@ -181,13 +221,35 @@ export function Project3() {
                   >
                     {doc.n}
                   </div>
-                  <ViewFullPdfLink index={i} />
+                  {(DOC_PAGE_COUNTS[i] ?? 0) > 0 && (
+                    <button
+                      onClick={() => setReader(i)}
+                      style={{
+                        position: 'absolute',
+                        right: 16,
+                        top: 12,
+                        cursor: 'pointer',
+                        border: 'none',
+                        fontSize: 11,
+                        fontWeight: 600,
+                        padding: '5px 12px',
+                        borderRadius: 999,
+                        background: 'rgba(12,12,12,.55)',
+                        color: '#D7E2EA',
+                        backdropFilter: 'blur(6px)',
+                        fontFamily: 'Kanit,sans-serif',
+                      }}
+                    >
+                      Xem PDF đầy đủ ↗
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
+      {reader !== null && <DocReader docIndex={reader} onClose={() => setReader(null)} />}
     </article>
   );
 }
