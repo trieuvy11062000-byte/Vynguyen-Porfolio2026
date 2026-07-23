@@ -15,10 +15,11 @@ function ViewFullPdfLink({ index }: { index: number }) {
   const ready = useFileExists(url);
   if (!ready) return null;
   return (
+    // download (not target=_blank) — embedded/preview browsers without a PDF
+    // viewer plugin render an opened PDF tab as a blank page
     <a
       href={url}
-      target="_blank"
-      rel="noreferrer"
+      download
       onClick={(e) => e.stopPropagation()}
       style={{
         position: 'absolute',
@@ -33,7 +34,7 @@ function ViewFullPdfLink({ index }: { index: number }) {
         backdropFilter: 'blur(6px)',
       }}
     >
-      Xem PDF đầy đủ ↗
+      Tải PDF đầy đủ ↓
     </a>
   );
 }
