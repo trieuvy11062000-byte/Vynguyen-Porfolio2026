@@ -188,7 +188,7 @@ export interface CaseStudyLink {
 }
 export const LINKS: CaseStudyLink[][] = [
   [{ t: 'View Brochure', h: 'https://sareneresidences.vn/' }, { t: 'View Proposal', h: 'https://sarene-sala.vn/' }],
-  [{ t: 'View Website', h: 'https://thisoretail.com/' }, { t: 'View Social Media', h: 'https://www.facebook.com/THISOMall.SaLa' }, { t: 'View Tiktok', h: 'https://www.tiktok.com/@thisomallsala' }],
+  [{ t: 'View Website', h: 'https://thacogroup.vn/' }, { t: 'View Social Media', h: 'https://www.facebook.com/THISOMall.SaLa' }, { t: 'View Tiktok', h: 'https://www.tiktok.com/@thisomallsala' }],
   [{ t: 'View Social Media', h: 'https://www.facebook.com/Thuctinhtamhon' }],
   [{ t: 'View Content Evaluator', h: '/content-evaluator.html' }],
 ];
