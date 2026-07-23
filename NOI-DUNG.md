@@ -2,6 +2,31 @@
 
 File này giúp bạn biết **sửa cái gì thì mở file nào**. Sau khi sửa, lưu file lại và tải lại trang (`npm run dev` đang chạy sẵn thì tự cập nhật, không cần restart).
 
+## 0. Quy trình tự sửa & chạy thử (không cần Claude)
+
+**Bước 1 — Mở project bằng VS Code** (máy bạn đã cài sẵn):
+Mở VS Code → File → Open Folder → chọn `D:\vy-portfolio`. Cây thư mục bên trái, bấm vào file cần sửa (xem mục 1 bên dưới để biết file nào), sửa chữ, nhấn `Ctrl+S` để lưu.
+
+**Bước 2 — Chạy thử trên máy:**
+Trong VS Code, menu Terminal → New Terminal, gõ:
+```
+npm run dev
+```
+Rồi mở trình duyệt vào `http://localhost:5173`. Từ đây, mỗi lần bạn sửa file và nhấn Lưu, trang **tự cập nhật ngay lập tức** — không cần chạy lại lệnh, không cần build. Muốn tắt thì bấm `Ctrl+C` trong terminal.
+
+**Bước 3 — Đưa thay đổi lên web thật (sau khi đã deploy Vercel):**
+Trong terminal, gõ lần lượt 3 lệnh:
+```
+git add -A
+git commit -m "Cap nhat noi dung"
+git push
+```
+Vercel sẽ tự phát hiện và deploy bản mới sau ~1 phút — bạn không cần làm gì thêm.
+
+**Cách thay thế không cần mở máy tính có project:** sau khi code đã nằm trên GitHub, bạn có thể sửa chữ **trực tiếp trên trang github.com** — mở repo → bấm vào file (vd `src/data/content.ts`) → bấm biểu tượng bút chì ✏️ → sửa → bấm "Commit changes". Vercel cũng tự deploy như trên. Cách này tiện khi chỉ sửa vài câu chữ.
+
+**Nếu lỡ sửa sai làm trang lỗi:** đừng lo — gõ `git checkout -- .` trong terminal để quay về bản đang chạy tốt gần nhất (bỏ mọi sửa đổi chưa commit).
+
 Nếu bạn không quen sửa code, cách nhanh nhất vẫn là **nhờ tôi (Claude Code) sửa hộ**: chỉ cần mô tả bằng lời bạn muốn đổi gì ("đổi tiêu đề dự án 01 thành...", "thêm câu này vào phần giới thiệu"...), tôi sẽ tìm đúng chỗ và sửa chính xác — xem mục cuối file.
 
 ## 1. Sửa văn bản (chữ trên trang)
@@ -19,10 +44,11 @@ Nếu bạn không quen sửa code, cách nhanh nhất vẫn là **nhờ tôi (C
 Ví dụ nhanh:
 - Ảnh đại diện (hero) → `public/assets/portrait.jpg`
 - Video clip cho carousel dự án 01 → `public/assets/p1v-1.mp4` (up video thật, nút play sẽ phát được)
-- File PDF cho phần showcase dự án 03 → `public/assets/p3-show-0.pdf`
 - CV để mọi người tải về → `public/assets/cv.pdf` (nút "Tải CV" ở đầu trang sẽ tự hiện ra khi có file này)
 
-Định dạng được chấp nhận theo từng loại ô: `.webp/.jpg/.jpeg/.png` cho ảnh, `.mp4/.webm/.mov` cho video (dự án 01), `.pdf` cho file PDF (dự án 03). Không cần biết trước — cứ up đúng tên, sai định dạng thì hệ thống tự bỏ qua và vẫn hiện ô trống đẹp (không bị vỡ giao diện).
+Định dạng được chấp nhận theo từng loại ô: `.webp/.jpg/.jpeg/.png` cho ảnh, `.mp4/.webm/.mov` cho video (dự án 01). Không cần biết trước — cứ up đúng tên, sai định dạng thì hệ thống tự bỏ qua và vẫn hiện ô trống đẹp (không bị vỡ giao diện).
+
+**Riêng tài liệu PDF ở mục 03 (Sales Enablement):** phần "Xem PDF đầy đủ" hiển thị bằng bộ ảnh từng trang đã render sẵn (`p3-doc-{số}-p{trang}.jpg`) chứ không đọc file PDF trực tiếp (PDF nhúng không chạy ổn định trên mọi trình duyệt). Vì vậy **khi thay/thêm PDF mới, hãy nhờ Claude render lại bộ ảnh trang** — chỉ cần nói "tôi vừa thay PDF mục 03, render lại giúp tôi".
 
 ### Vì sao vài ảnh mẫu bị mờ/vỡ nét?
 
