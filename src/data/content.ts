@@ -55,6 +55,7 @@ export const CERTS: CertItem[] = [
   { n: 'Digital Marketing in Action', o: 'CareerPrep' },
   { n: 'Fundamentals of Digital Marketing', o: 'Google Digital Garage' },
   { n: 'AI-Powered Performance Ads', o: 'Google Skillshop' },
+  { n: 'Google Ads Search Professional', o: 'Google Skillshop' },
   { n: 'Python Beginner', o: 'Xóm Data' },
   { n: 'IELTS 6.0', o: 'English Proficiency' },
 ];
