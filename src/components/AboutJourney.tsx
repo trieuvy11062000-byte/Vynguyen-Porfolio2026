@@ -7,7 +7,6 @@ function TimelineCard({
   org,
   orgHref,
   bullets,
-  metric,
   c,
 }: {
   date: string;
@@ -15,7 +14,6 @@ function TimelineCard({
   org: string;
   orgHref?: string;
   bullets: string[];
-  metric: string;
   c: { glass: string; border: string; sub: string };
 }) {
   const cardStyle: React.CSSProperties = {
@@ -43,24 +41,13 @@ function TimelineCard({
       ) : (
         <span style={{ fontSize: 13, color: c.sub, fontWeight: 500 }}>{org}</span>
       )}
-      <ul style={{ margin: '16px 0 0', paddingLeft: 18, fontSize: 14, fontWeight: 300, lineHeight: 1.7, color: c.sub, flex: 1 }}>
+      <div style={{ margin: '16px 0 0', display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
         {bullets.map((b, i) => (
-          <li key={i}>{b}</li>
+          <div key={i} style={{ display: 'flex', gap: 10, fontSize: 14, fontWeight: 300, lineHeight: 1.6, color: c.sub }}>
+            <span style={{ color: '#E45CFF', flex: '0 0 auto' }}>●</span>
+            <span>{b}</span>
+          </div>
         ))}
-      </ul>
-      <div
-        className="font-mono-vy"
-        style={{
-          marginTop: 18,
-          fontWeight: 700,
-          fontSize: 16,
-          backgroundImage: 'linear-gradient(90deg,#E45CFF,#7A9BFF)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          color: 'transparent',
-        }}
-      >
-        {metric}
       </div>
     </div>
   );
@@ -104,16 +91,14 @@ export function AboutJourney() {
           title={t.tl1t}
           org="THỔ House"
           orgHref="https://www.facebook.com/Thuctinhtamhon"
-          bullets={[t.tl1d1, t.tl1d2]}
-          metric={t.tl1m}
+          bullets={[t.tl1d1, t.tl1d2, t.tl1d3]}
           c={c}
         />
         <TimelineCard
           date="07/2024 – 04/2026"
           title={t.tl2t}
           org="THACO Group | Đại Quang Minh & THISO Retail"
-          bullets={[t.tl2d1, t.tl2d2]}
-          metric="16+ campaign · +20–30% engagement"
+          bullets={[t.tl2d1, t.tl2d2, t.tl2d3]}
           c={c}
         />
       </div>

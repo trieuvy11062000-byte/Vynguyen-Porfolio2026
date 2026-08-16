@@ -2,11 +2,11 @@ export type Lang = 'vi' | 'en';
 
 export interface DictShape {
   about: string; services: string; projects: string; certs: string; contact: string;
-  heroH: string; heroRole: string; heroTag: string; cta: string; cvBtn: string;
+  heroH: string; heroRole: string; heroTag: string; cta: string;
   c1: string; c2: string; c3: string; c4: string;
   aboutP: string; edu: string;
-  tl1t: string; tl1d1: string; tl1d2: string; tl1m: string;
-  tl2t: string; tl2d1: string; tl2d2: string;
+  tl1t: string; tl1d1: string; tl1d2: string; tl1d3: string;
+  tl2t: string; tl2d1: string; tl2d2: string; tl2d3: string;
   s1: string; s2: string; s3: string; s4: string;
   p1goal: string; p2goal: string; p3goal: string;
   p1OutT: string; p1V1: string; p1L1: string; p1V2: string; p1L2: string; p1Note: string; p1DelivT: string;
@@ -21,12 +21,12 @@ export const DICT: Record<Lang, DictShape> = {
     heroH: 'Hi, Vỹ Nguyễn đây',
     heroRole: 'Chuyên viên Marketing & Truyền thông',
     heroTag: 'Biến ý tưởng thành nội dung, chiến dịch và những trải nghiệm thực tế.',
-    cta: 'Khám phá dự án', cvBtn: 'Tải CV',
+    cta: 'Khám phá dự án',
     c1: 'Ấn phẩm chiến dịch đã sản xuất', c2: 'Lượt xem mới', c3: 'Người theo dõi mới', c4: 'Tăng trưởng người theo dõi',
     aboutP: 'Tôi là người làm Marketing và Truyền thông với kinh nghiệm trong Branding, Social Media, Event và Content Strategy. Tôi thích biến ý tưởng phức tạp thành câu chuyện dễ hiểu và tạo ra chiến dịch mang giá trị thực tế. Điểm mạnh của tôi là kết nối tư duy chiến lược với khả năng thực thi — từ truyền thông nội bộ, quản lý nội dung đến điều phối dự án đa phòng ban.',
     edu: 'Đại học Quốc tế, ĐHQG-HCM — Cử nhân QTKD · GPA 3.6/4.0 · 2018–2023',
-    tl1t: 'Content Creator & Community Management', tl1d1: 'Sáng tạo nội dung, phát triển cộng đồng trong lĩnh vực tarot & nghệ thuật.', tl1d2: 'Hợp tác micro-influencer, tổ chức hoạt động cộng đồng.', tl1m: '+40% follower (4k→6k) trong 3 tháng',
-    tl2t: 'Marketing Truyền thông & Digital Executive', tl2d1: 'Điều phối dự án marketing & truyền thông liên phòng ban, agency và đối tác ngoài.', tl2d2: 'Quản lý ấn phẩm truyền thông, timeline triển khai, hỗ trợ 2.000+ nhân sự & stakeholder.',
+    tl1t: 'Content Creator & Community Management', tl1d1: 'Sáng tạo nội dung, phát triển cộng đồng trong lĩnh vực tarot & nghệ thuật.', tl1d2: 'Hợp tác micro-influencer, tổ chức hoạt động cộng đồng.', tl1d3: 'Tăng trưởng cộng đồng +40% follower (4k→6k) trong 3 tháng.',
+    tl2t: 'Marketing Truyền thông & Digital Executive', tl2d1: 'Lên ý tưởng và sản xuất nội dung cho TikTok, Facebook, website và các kênh truyền thông của thương hiệu.', tl2d2: 'Xây dựng content calendar và định hướng nội dung theo từng kênh, nhóm nội dung và mục tiêu truyền thông.', tl2d3: 'Brief và phối hợp với Designer, Video Editor và agency để triển khai visual, video và các hạng mục nội dung theo campaign.',
     s1: 'Phát triển nội dung và triển khai các hoạt động truyền thông theo định hướng thương hiệu.', s2: 'Xây dựng content pillar, content calendar và định hướng nội dung theo mục tiêu truyền thông.', s3: 'Vận hành TikTok, Facebook và triển khai short-form content, content scheduling và social performance tracking.', s4: 'Phối hợp triển khai campaign từ concept, creative brief đến execution cùng agency và các đối tác.',
     p1goal: 'Phát triển nội dung và phối hợp triển khai truyền thông cho các hoạt động launch & activation tại Thiso Mall Sala.',
     p2goal: 'Triển khai nội dung và quản lý các điểm chạm truyền thông, bao gồm ấn phẩm nội bộ, website, email marketing và các kênh phân phối nội dung, đảm bảo thông điệp và hình ảnh thương hiệu nhất quán.',
@@ -41,12 +41,12 @@ export const DICT: Record<Lang, DictShape> = {
     heroH: "Hi, I'm Vỹ Nguyễn",
     heroRole: 'Marketing & Communications Executive',
     heroTag: 'Turning ideas into content, campaigns, and real-world experiences.',
-    cta: 'Explore the work', cvBtn: 'Download CV',
+    cta: 'Explore the work',
     c1: 'Campaign assets produced', c2: 'Views', c3: 'New followers', c4: 'Follower growth',
     aboutP: 'I am a Marketing & Communications professional with experience in Branding, Social Media, Events and Content Strategy. I love turning complex ideas into stories people understand, and building campaigns that create real value. My strength is connecting strategic thinking with execution — from internal communications and content operations to cross-functional project coordination.',
     edu: 'International University, VNU-HCM — BBA · GPA 3.6/4.0 · 2018–2023',
-    tl1t: 'Content Creator & Community Management', tl1d1: 'Created content and grew a community in the tarot & art niche.', tl1d2: 'Built micro-influencer partnerships and organized community activities.', tl1m: '+40% followers (4k→6k) in 3 months',
-    tl2t: 'Marketing Communications & Digital Marketing Executive', tl2d1: 'Coordinated cross-functional marketing & comms projects with agencies and external partners.', tl2d2: 'Managed communication assets and rollout timelines, supporting 2,000+ staff & stakeholders.',
+    tl1t: 'Content Creator & Community Management', tl1d1: 'Created content and grew a community in the tarot & art niche.', tl1d2: 'Built micro-influencer partnerships and organized community activities.', tl1d3: 'Grew the community +40% followers (4k→6k) in 3 months.',
+    tl2t: 'Marketing Communications & Digital Marketing Executive', tl2d1: 'Ideated and produced content for TikTok, Facebook, website and the brand’s communication channels.', tl2d2: 'Built content calendars and set content direction by channel, content pillar and communication goals.', tl2d3: 'Briefed and coordinated with Designers, Video Editors and agencies to deliver visuals, video and content for each campaign.',
     s1: 'Developing content and delivering communication activities aligned with brand direction.', s2: 'Building content pillars, content calendars, and content direction aligned with communication goals.', s3: 'Managing TikTok and Facebook, producing short-form content, scheduling posts, and tracking social performance.', s4: 'Coordinating campaign execution from concept and creative briefing through delivery with agencies and partners.',
     p1goal: 'Developed content and coordinated communications execution for launch & activation activities at Thiso Mall Sala.',
     p2goal: 'Delivered content and managed communication touchpoints — internal publications, website, email marketing and content distribution channels — keeping messaging and brand imagery consistent.',

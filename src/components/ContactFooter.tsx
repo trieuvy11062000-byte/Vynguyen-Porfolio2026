@@ -134,7 +134,7 @@ export function ContactFooter() {
           }}
         >
           <span>© 2026 Nguyễn Ngô Triều Vỹ</span>
-          <span>Creative &amp; Brand Strategist · Multi-Disciplinary Content Lead</span>
+          <span>MARKETING &amp; COMMUNICATIONS · CONTENT &amp; SOCIAL MEDIA · CREATIVE EXECUTION</span>
         </div>
       </div>
     </section>

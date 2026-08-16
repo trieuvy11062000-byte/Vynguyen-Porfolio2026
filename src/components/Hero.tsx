@@ -2,13 +2,10 @@ import { useState, type MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import { useThemeLang } from '../context/ThemeLangContext';
 import { ImageSlot } from './ImageSlot';
-import { DOWNLOADS } from '../data/mediaAssets';
-import { useFileExists } from '../hooks/useFileExists';
 
 export function Hero() {
   const { t, c, gA, gB, ctaGlow } = useThemeLang();
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const cvReady = useFileExists(DOWNLOADS.cv);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -107,34 +104,6 @@ export function Hero() {
         >
           {t.cta}
         </a>
-        {cvReady && (
-          <a
-            href={DOWNLOADS.cv}
-            download
-            style={{
-              display: 'inline-block',
-              padding: '16px 40px',
-              borderRadius: 999,
-              fontWeight: 700,
-              fontSize: 15,
-              letterSpacing: '.04em',
-              color: c.text,
-              background: c.glass,
-              border: `1px solid ${c.border}`,
-              transition: 'transform .3s,border-color .3s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px) scale(1.03)';
-              e.currentTarget.style.borderColor = '#B600A8';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.borderColor = c.border;
-            }}
-          >
-            {t.cvBtn}
-          </a>
-        )}
       </div>
     </section>
   );

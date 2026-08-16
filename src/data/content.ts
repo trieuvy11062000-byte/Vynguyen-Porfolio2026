@@ -125,8 +125,8 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       roleB: ['Content series & storytelling', 'Community moderation', 'Hợp tác micro-influencer', 'Đo lường & nurturing lead'],
       steps: ['Niche Research', 'Content Series', 'Community', 'Partnership', 'Conversion'],
       outs: ['Tăng trưởng organic thuần bằng nội dung & cộng đồng', 'Chuỗi hoạt động cộng đồng và hợp tác micro-creator', 'Quy trình nurturing chuyển follower thành khách hàng'],
-      mets: [{ v: '+40%', l: 'Follower / 3 tháng' }, { v: '4k→6k', l: 'Quy mô cộng đồng' }, { v: '10–15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
-      short: 'Tăng trưởng cộng đồng niche +40% trong 3 tháng, chuyển đổi 10–15%.',
+      mets: [{ v: '+40%', l: 'Follower / 3 tháng' }, { v: '4k→6k', l: 'Quy mô cộng đồng' }, { v: '15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
+      short: 'Tăng trưởng cộng đồng niche +40% trong 3 tháng, chuyển đổi 15%.',
     },
     {
       badge: 'AI Workflow / Marketing System', title: 'Hệ thống AI chấm điểm & Audit nội dung Social', time: '2026', role: 'Thiết kế hệ thống & Xây dựng Workflow AI', org: 'Freelance Project',
@@ -167,8 +167,8 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
       roleB: ['Content series & storytelling', 'Community moderation', 'Micro-influencer partnerships', 'Lead measurement & nurturing'],
       steps: ['Niche Research', 'Content Series', 'Community', 'Partnership', 'Conversion'],
       outs: ['Purely organic growth through content & community', 'Community activities and micro-creator collaborations', 'A nurturing flow converting followers into customers'],
-      mets: [{ v: '+40%', l: 'Followers / 3 months' }, { v: '4k→6k', l: 'Community size' }, { v: '10–15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
-      short: 'Niche community growth +40% in 3 months, 10–15% conversion.',
+      mets: [{ v: '+40%', l: 'Followers / 3 months' }, { v: '4k→6k', l: 'Community size' }, { v: '15%', l: 'Lead conversion' }, { v: '100%', l: 'Organic growth' }],
+      short: 'Niche community growth +40% in 3 months, 15% conversion.',
     },
     {
       badge: 'AI Workflow / Marketing System', title: 'AI-Powered Social Content Audit Framework', time: '2026', role: 'System Designer & Workflow Developer', org: 'Freelance Project',
