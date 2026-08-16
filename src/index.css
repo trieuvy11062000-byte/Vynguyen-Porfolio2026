@@ -64,3 +64,14 @@ a {
 .font-mono-vy {
   font-family: 'JetBrains Mono', monospace;
 }
+
+/* Always 2 or 4 columns — never an orphaned single card on its own row. */
+#vy-counters {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  #vy-counters {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -82,7 +82,6 @@ export function MarqueeCounters() {
         ref={ref}
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))',
           gap: 20,
           maxWidth: 1100,
           margin: '56px auto 0',
