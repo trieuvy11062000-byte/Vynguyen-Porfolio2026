@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useThemeLang } from '../context/ThemeLangContext';
-import { SVC_TITLES, SKILLS } from '../data/content';
+import { SVC_TITLES, CORE_TOOLS } from '../data/content';
 
 export function ServicesExpertise() {
   const { c, t } = useThemeLang();
   const [open, setOpen] = useState(0);
 
-  const descriptions = [t.s1, t.s2, t.s3, t.s4, t.s5];
+  const descriptions = [t.s1, t.s2, t.s3, t.s4];
 
   return (
     <section
@@ -66,33 +66,41 @@ export function ServicesExpertise() {
           })}
           <div style={{ borderTop: `1px solid ${c.srvBorder}` }} />
         </div>
-        <div style={{ marginTop: 60, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-          {SKILLS.map((s) => (
-            <span
-              key={s}
-              style={{
-                padding: '10px 20px',
-                borderRadius: 999,
-                border: `1px solid ${c.srvBorder}`,
-                fontSize: 13,
-                fontWeight: 500,
-                transition: 'all .3s',
-                cursor: 'default',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#B600A8';
-                e.currentTarget.style.boxShadow = '0 0 18px rgba(182,0,168,.3)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = c.srvBorder;
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.transform = 'none';
-              }}
-            >
-              {s}
-            </span>
-          ))}
+        <div style={{ marginTop: 60 }}>
+          <span
+            className="font-mono-vy"
+            style={{ display: 'block', marginBottom: 18, fontSize: 12, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', opacity: 0.55 }}
+          >
+            Core Tools
+          </span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            {CORE_TOOLS.map((s) => (
+              <span
+                key={s}
+                style={{
+                  padding: '10px 20px',
+                  borderRadius: 999,
+                  border: `1px solid ${c.srvBorder}`,
+                  fontSize: 13,
+                  fontWeight: 500,
+                  transition: 'all .3s',
+                  cursor: 'default',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#B600A8';
+                  e.currentTarget.style.boxShadow = '0 0 18px rgba(182,0,168,.3)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = c.srvBorder;
+                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

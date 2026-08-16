@@ -4,9 +4,24 @@ import { useThemeLang } from '../context/ThemeLangContext';
 import { useCountUp } from '../hooks/useCountUp';
 import { MARQUEE_WORDS } from '../data/content';
 
-function CounterCard({ target, suffix, label, active }: { target: number; suffix: string; label: string; active: boolean }) {
-  const { c, gA, gB } = useThemeLang();
-  const value = useCountUp(target, active);
+function CounterCard({
+  target,
+  suffix,
+  prefix = '',
+  decimals = 0,
+  label,
+  active,
+}: {
+  target: number;
+  suffix: string;
+  prefix?: string;
+  decimals?: number;
+  label: string;
+  active: boolean;
+}) {
+  const { c, gA, gB, lang } = useThemeLang();
+  const value = useCountUp(target, active, decimals);
+  const display = lang === 'vi' ? value.replace('.', ',') : value;
   return (
     <div style={{ background: c.glass, border: `1px solid ${c.border}`, borderRadius: 24, padding: '32px 28px', backdropFilter: 'blur(12px)' }}>
       <div
@@ -21,7 +36,8 @@ function CounterCard({ target, suffix, label, active }: { target: number; suffix
           color: 'transparent',
         }}
       >
-        {value}
+        {prefix}
+        {display}
         {suffix}
       </div>
       <div style={{ marginTop: 10, fontSize: 12, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', color: c.sub }}>{label}</div>
@@ -74,8 +90,9 @@ export function MarqueeCounters() {
         }}
       >
         <CounterCard target={200} suffix="+" label={t.c1} active={inView} />
-        <CounterCard target={3} suffix="M+" label={t.c2} active={inView} />
-        <CounterCard target={20} suffix="+" label={t.c3} active={inView} />
+        <CounterCard target={7.9} suffix="M+" decimals={1} label={t.c2} active={inView} />
+        <CounterCard target={13} suffix="K+" label={t.c3} active={inView} />
+        <CounterCard target={40} suffix="%" prefix="+" label={t.c4} active={inView} />
       </div>
     </section>
   );

@@ -7,19 +7,6 @@ import { MP } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 
-const CHIP_STYLE: Record<'website' | 'newsletter' | 'email', { bg: string; border: string; color: string; label: string }> = {
-  website: { bg: 'rgba(45,212,191,.16)', border: 'rgba(45,212,191,.4)', color: '#5EEAD4', label: 'Website' },
-  newsletter: { bg: 'rgba(182,0,168,.16)', border: 'rgba(182,0,168,.5)', color: '#E45CFF', label: 'Newsletter' },
-  email: { bg: 'rgba(190,76,0,.18)', border: 'rgba(190,76,0,.5)', color: '#FDBA74', label: 'Email Campaign' },
-};
-
-function Chip({ kind }: { kind: 'website' | 'newsletter' | 'email' }) {
-  const s = CHIP_STYLE[kind];
-  return (
-    <span style={{ background: s.bg, border: `1px solid ${s.border}`, color: s.color, borderRadius: 6, padding: '5px 8px' }}>{s.label}</span>
-  );
-}
-
 export function Project2() {
   const { t } = useThemeLang();
   const [mag, setMag] = useState(0);
@@ -33,44 +20,19 @@ export function Project2() {
 
   return (
     <article style={{ maxWidth: 1280, margin: '0 auto 140px' }}>
-      <ProjectHeader num="02" title="Multi-Channel Brand Communications" category="Brand Strategy & Content Marketing" goal={t.p2goal} />
+      <ProjectHeader num="02" title="Multi-Channel Brand Communication" category="Content & Channel Execution" goal={t.p2goal} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: 32, alignItems: 'start' }}>
-        {/* Left: 3 stacked modules */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {/* Left: 2 stacked modules */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
           {/* Module 1: CMS */}
           <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 24, padding: 20 }}>
             <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 12 }}>CMS / Website Editorial Portal</div>
             <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
-              <ImageSlot id="p2-cms" placeholder="CMS screenshot" style={{ width: '100%', height: 170 }} />
+              <ImageSlot id="p2-cms" placeholder="CMS screenshot" style={{ width: '100%', height: 240 }} />
             </div>
           </div>
 
-          {/* Module 2: Content Plan */}
-          <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 24, padding: 20 }}>
-            <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 12 }}>Content Plan — Editorial Calendar</div>
-            <div className="font-mono-vy" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, fontSize: 9 }}>
-              <div style={{ color: '#7A8591', textTransform: 'uppercase', letterSpacing: '.1em' }}>Week 1</div>
-              <div style={{ color: '#7A8591', textTransform: 'uppercase', letterSpacing: '.1em' }}>Week 2</div>
-              <div style={{ color: '#7A8591', textTransform: 'uppercase', letterSpacing: '.1em' }}>Week 3</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <Chip kind="website" />
-                <Chip kind="newsletter" />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <Chip kind="email" />
-                <Chip kind="website" />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <Chip kind="newsletter" />
-                <Chip kind="email" />
-              </div>
-            </div>
-            <div style={{ marginTop: 12, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)' }}>
-              <ImageSlot id="p2-plan" placeholder="content plan — cropped Excel area (calendar / timeline)" style={{ width: '100%', height: 110 }} />
-            </div>
-          </div>
-
-          {/* Module 3: Email Marketing Preview */}
+          {/* Module 2: Email Marketing Preview */}
           <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 24, padding: 20 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
               <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591' }}>Email Marketing Preview</div>

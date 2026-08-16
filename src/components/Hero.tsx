@@ -77,9 +77,15 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <p style={{ maxWidth: 720, margin: '0 0 32px', fontWeight: 300, letterSpacing: '.14em', fontSize: 'clamp(11px,1.4vw,14px)', color: c.sub, textWrap: 'pretty' }}>
-        {t.heroSub}
-      </p>
+      <div style={{ maxWidth: 640, margin: '0 0 32px' }}>
+        <div
+          className="font-mono-vy"
+          style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.1em', fontSize: 'clamp(13px,1.8vw,18px)', color: c.text, marginBottom: 10 }}
+        >
+          {t.heroRole}
+        </div>
+        <p style={{ margin: 0, fontWeight: 300, fontSize: 'clamp(14px,1.6vw,17px)', lineHeight: 1.5, color: c.sub, textWrap: 'pretty' }}>{t.heroTag}</p>
+      </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16 }}>
         <a

@@ -7,7 +7,7 @@ import { VC, WS } from '../../data/content';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 
-const DELIVERABLES = ['PR Articles', 'MC Scripts', 'Social Content', 'Event Trailer', 'Event Recap', 'TVC Assets'];
+const DELIVERABLES = ['Social Content', 'Short-form Video', 'PR Articles', 'MC Scripts', 'Event Trailer', 'Event Recap'];
 
 export function Project1() {
   const { t, glow, heroGlow } = useThemeLang();
@@ -18,7 +18,7 @@ export function Project1() {
 
   return (
     <article style={{ maxWidth: 1280, margin: '0 auto 140px' }}>
-      <ProjectHeader num="01" title="Social Media & Launch Campaigns" category="Experiential Marketing & Event Operations" goal={t.p1goal} />
+      <ProjectHeader num="01" title="Social Media & Launch Campaigns" category="Content Creation & Campaign Execution" goal={t.p1goal} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: 32, alignItems: 'start' }}>
         {/* Left: vertical clip carousel */}
         <div>
@@ -146,25 +146,24 @@ export function Project1() {
             }}
           >
             <div style={{ padding: '24px 26px', borderRight: '1px solid rgba(255,255,255,.1)' }}>
-              <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 14 }}>{t.impactT}</div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 18px' }}>
+              <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 14 }}>{t.p1OutT}</div>
+              <div style={{ display: 'flex', gap: 28 }}>
                 {[
-                  { v: '16+', l: t.i1 },
-                  { v: '10+', l: t.i2 },
-                  { v: '5+', l: t.i3 },
-                  { v: '2000+', l: t.i4 },
+                  { v: t.p1V1, l: t.p1L1 },
+                  { v: t.p1V2, l: t.p1L2 },
                 ].map((m, i) => (
                   <div key={i}>
                     <span className="font-mono-vy" style={{ fontWeight: 800, fontSize: 26, textShadow: '0 0 22px rgba(182,0,168,.55)' }}>
                       {m.v}
                     </span>
-                    <div style={{ fontSize: 9, letterSpacing: '.14em', textTransform: 'uppercase', color: '#7A8591' }}>{m.l}</div>
+                    <div style={{ fontSize: 9, letterSpacing: '.14em', textTransform: 'uppercase', color: '#7A8591', whiteSpace: 'nowrap' }}>{m.l}</div>
                   </div>
                 ))}
               </div>
+              <p style={{ margin: '16px 0 0', fontSize: 12, lineHeight: 1.6, fontWeight: 300, color: '#98A4B0' }}>{t.p1Note}</p>
             </div>
             <div style={{ padding: '24px 26px' }}>
-              <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 14 }}>{t.delivT}</div>
+              <div style={{ fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7A8591', marginBottom: 14 }}>{t.p1DelivT}</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 16px', fontSize: 13, fontWeight: 400 }}>
                 {DELIVERABLES.map((d) => (
                   <span key={d}>

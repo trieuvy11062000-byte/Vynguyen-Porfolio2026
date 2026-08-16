@@ -55,6 +55,7 @@ export const CERTS: CertItem[] = [
   { n: 'Digital Marketing in Action', o: 'CareerPrep' },
   { n: 'Fundamentals of Digital Marketing', o: 'Google Digital Garage' },
   { n: 'AI-Powered Performance Ads', o: 'Google Skillshop' },
+  { n: 'Google Ads Search Professional', o: 'Google Skillshop' },
   { n: 'Python Beginner', o: 'Xóm Data' },
   { n: 'IELTS 6.0', o: 'English Proficiency' },
 ];
@@ -63,17 +64,15 @@ export const SVC_TITLES: string[] = [
   'Brand Communication',
   'Content Strategy',
   'Social Media Marketing',
-  'Event Management',
   'Campaign Planning',
 ];
 
-export const SKILLS: string[] = [
-  'Adobe Suite', 'Figma', 'UX Wireframing', 'Event Logistics', 'Campaign Architecture',
-  'Copywriting', 'Content Scheduling', 'CRM Systems', 'Meta Business Suite', 'Canva', 'CapCut', 'AI Workflows',
+export const CORE_TOOLS: string[] = [
+  'Canva', 'CapCut', 'Figma', 'Meta Business Suite', 'Adobe Suite', 'AI Tools',
 ];
 
 export const MARQUEE_WORDS: string[] = [
-  'Creative Direction', 'Brand Activation', 'Experiential Events', 'Short-Form Video', 'UX/UI Audit', 'Content Architecture',
+  'Marketing & Communications', 'Content Creation', 'Social Media', 'Campaign Execution', 'Website & CRM Audit', 'Brand Communication', 'Short-Form Video',
 ];
 
 export interface SelectedProjectMetric {
@@ -92,6 +91,8 @@ export interface SelectedProject {
   steps: string[];
   outs: string[];
   mets: SelectedProjectMetric[];
+  metsLabel?: string;
+  metsSub?: string;
   short: string;
 }
 
@@ -99,22 +100,23 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
   vi: [
     {
       badge: 'Campaign / Launch Event', title: 'Sarene Residence & Commercial Complex 6.8 — Launch Campaign', time: '01/2026', role: 'Marketing Executive', org: 'Đại Quang Minh · THACO Group',
-      bg: 'Chiến dịch ra mắt tổ hợp Sarene Residence & Commercial Complex 6.8 — dự án trọng điểm cần độ phủ truyền thông lớn trong thời gian ngắn.',
-      prob: 'Tạo nhận diện và thu hút khách hàng tiềm năng cho sự kiện launch, trong khi phải đồng bộ nhiều phòng ban, agency và đội Sales cùng lúc.',
-      roleB: ['Campaign Planning', 'Sản xuất PR / MC script / TVC', 'Điều phối sự kiện & agency', 'Stakeholder Management'],
-      steps: ['Research', 'Planning', 'Production', 'Launch', 'Reporting'],
-      outs: ['Launch đúng tiến độ với điều phối liên phòng ban trơn tru', 'Triển khai đa kênh: PR, social, TVC, ấn phẩm sự kiện', 'Báo cáo hiệu quả hậu chiến dịch cho ban lãnh đạo'],
-      mets: [{ v: '300+', l: 'Khách tham dự' }, { v: '+20–30%', l: 'Engagement' }, { v: '30+', l: 'Ấn phẩm truyền thông' }, { v: '5+', l: 'Đội nhóm phối hợp' }],
+      bg: 'Chiến dịch ra mắt Sarene Residence & Commercial Complex 6.8, với yêu cầu triển khai truyền thông và sự kiện trong thời gian ngắn.',
+      prob: 'Tăng nhận diện và thu hút khách hàng tiềm năng cho sự kiện ra mắt, đồng thời phối hợp triển khai giữa các phòng ban, đơn vị đối tác và agency.',
+      roleB: ['Triển khai chiến dịch', 'Sản xuất PR, kịch bản MC, TVC', 'Điều phối sự kiện và agency', 'Phối hợp các bên liên quan'],
+      steps: ['Nghiên cứu', 'Lập kế hoạch', 'Sản xuất', 'Triển khai', 'Báo cáo'],
+      outs: ['Triển khai sự kiện ra mắt đúng tiến độ, phối hợp với các bên liên quan', 'Sản xuất và triển khai nội dung trên nhiều kênh: PR, mạng xã hội, TVC và sự kiện', 'Tổng hợp và báo cáo kết quả sau chiến dịch'],
+      mets: [{ v: '300+', l: 'Khách tham dự' }, { v: '10+', l: 'Hạng mục triển khai' }, { v: '5+', l: 'Nhóm / đơn vị phối hợp' }],
       short: 'Chiến dịch launch tích hợp — từ chiến lược đến sự kiện thực tế.',
     },
     {
       badge: 'Brand / Content Ecosystem', title: 'THACO GROUP — Activation & Hệ sinh thái nội dung', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
-      bg: 'Vận hành truyền thông cho Khu đô thị Sala và trung tâm thương mại với nhiều brand activation lớn: 3CE, Pop Mart store launch tại THISO Mall Sala.',
-      prob: 'Giữ nhịp nội dung đa kênh liên tục và đồng bộ thông điệp giữa tenant, agency và nội bộ — với nguồn lực giới hạn.',
-      roleB: ['Content Strategy đa nền tảng', 'Lập kế hoạch & điều phối truyền thông activation với tenant, agency', 'Quản lý ấn phẩm & timeline', 'Theo dõi & tối ưu hiệu quả'],
+      bg: 'Vận hành truyền thông cho Khu đô thị Sala và THISO Mall Sala, với các hoạt động nội dung, brand activation và tương tác cộng đồng được triển khai thường xuyên.',
+      prob: 'Duy trì nhịp nội dung đa kênh và đồng bộ thông điệp giữa tenant, agency và nội bộ, trong khi đảm bảo tiến độ triển khai theo từng campaign.',
+      roleB: ['Lập kế hoạch và điều phối nội dung theo từng campaign', 'Xây dựng content calendar và quản lý timeline triển khai', 'Brief và phối hợp với Designer, Video Editor, Agency', 'Theo dõi hiệu quả nội dung và tổng hợp báo cáo', 'Phát triển creative concept cho các hoạt động cộng đồng và brand activation'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
-      outs: ['16+ chiến dịch & sự kiện activation được thực thi', 'Hệ nội dung nhất quán trên social, website, email, ấn phẩm', 'Thúc đẩy nhận diện thương hiệu & lượng foot-traffic cho TTM'],
-      mets: [{ v: '16+', l: 'Campaign thực hiện' }, { v: '5M+', l: 'Lượt tiếp cận trên Social (Reach)' }, { v: '80K+', l: 'Lượt tương tác nội dung (Engagement)' }, { v: '1.5M+', l: 'Lượt tiếp cận (Total Social Reach)' }],
+      outs: ['Triển khai 16+ campaign & hoạt động activation theo kế hoạch', 'Duy trì hệ thống nội dung nhất quán trên social, website, email và các ấn phẩm truyền thông', 'Theo dõi hiệu quả nội dung và phản hồi từ các kênh để điều chỉnh kế hoạch triển khai'],
+      mets: [{ v: '1,5M+', l: 'Tổng lượt tiếp cận' }, { v: '2,8M+', l: 'Tổng lượt hiển thị' }, { v: '80K+', l: 'Tổng lượt tương tác' }, { v: '32%', l: 'Tỷ lệ xem hết video trung bình' }],
+      metsLabel: 'Kết quả truyền thông xã hội', metsSub: 'Trong 3 tháng triển khai',
       short: 'Vận hành nội dung & activation đa kênh cho retail — 3CE, Pop Mart.',
     },
     {
@@ -141,22 +143,23 @@ export const SPD: Record<'vi' | 'en', SelectedProject[]> = {
   en: [
     {
       badge: 'Campaign / Launch Event', title: 'Sarene Residence & Commercial Complex 6.8 — Launch Campaign', time: '01/2026', role: 'Marketing Executive', org: 'Dai Quang Minh · THACO Group',
-      bg: 'Launch campaign for the Sarene Residence & Commercial Complex 6.8 — a flagship project requiring broad communication coverage on a tight timeline.',
-      prob: 'Build awareness and attract qualified prospects for the launch event while aligning multiple departments, agencies and the Sales team simultaneously.',
-      roleB: ['Campaign Planning', 'PR / MC script / TVC production', 'Event & agency coordination', 'Stakeholder Management'],
+      bg: 'Launch campaign for Sarene Residence & Commercial Complex 6.8, requiring communications and event execution on a tight timeline.',
+      prob: 'Increase awareness and attract qualified prospects for the launch event, while coordinating execution across departments, partner units and agencies.',
+      roleB: ['Campaign Execution', 'PR, MC Script & TVC Production', 'Event & Agency Coordination', 'Stakeholder Coordination'],
       steps: ['Research', 'Planning', 'Production', 'Launch', 'Reporting'],
-      outs: ['On-schedule launch with smooth cross-functional coordination', 'Multi-channel rollout: PR, social, TVC, event collateral', 'Post-campaign performance reporting to leadership'],
-      mets: [{ v: '300+', l: 'Attendees' }, { v: '+20–30%', l: 'Engagement' }, { v: '30+', l: 'Communication assets' }, { v: '5+', l: 'Teams coordinated' }],
+      outs: ['On-schedule launch delivery, coordinated with all stakeholders', 'Produced and rolled out content across multiple channels: PR, social media, TVC and event', 'Consolidated and reported campaign results post-launch'],
+      mets: [{ v: '300+', l: 'Attendees' }, { v: '10+', l: 'Deliverables executed' }, { v: '5+', l: 'Teams / partners coordinated' }],
       short: 'Integrated launch campaign — from strategy to on-ground event.',
     },
     {
       badge: 'Brand / Content Ecosystem', title: 'THACO GROUP — Activation & Content Ecosystem', time: '07/2024 – 04/2026', role: 'Marketing Communications Executive', org: 'THISO Retail Corporation · THACO Group',
-      bg: 'Ran communications for Sala Urban area and a retail mall with major brand activations: 3CE campaigns and the Pop Mart store launch at THISO Mall Sala.',
-      prob: 'Sustain a continuous multi-channel content rhythm and keep messaging aligned across tenants, agencies and internal teams — with limited resources.',
-      roleB: ['Multi-platform content strategy', 'Planned and coordinated marketing activation campaigns with tenants/agencies', 'Asset & timeline management', 'Performance monitoring & optimization'],
+      bg: 'Managed communications for Sala Urban Area and THISO Mall Sala, with regular content, brand activation and community engagement initiatives.',
+      prob: 'Sustaining a continuous multi-channel content rhythm and aligning messaging across tenants, agencies and internal teams, while keeping each campaign on schedule.',
+      roleB: ['Planning and coordinating content for each campaign', 'Building content calendars and managing rollout timelines', 'Briefing and coordinating with Designers, Video Editors and Agencies', 'Tracking content performance and consolidating reports', 'Developing creative concepts for community activities and brand activations'],
       steps: ['Insight', 'Content Plan', 'Production', 'Distribution', 'Optimization'],
-      outs: ['16+ campaigns & activation events executed', 'Consistent content system across social, web, email, print', 'Boosted brand recognition & foot traffic for THISO Mall'],
-      mets: [{ v: '16+', l: 'Campaigns executed' }, { v: '5M+', l: 'Social Reach' }, { v: '80K+', l: 'Content Engagement' }, { v: '1.5M+', l: 'Total Social Reach' }],
+      outs: ['16+ campaigns & activation initiatives executed on schedule', 'Maintained a consistent content system across social, website, email and communication assets', 'Tracked content performance and channel feedback to refine execution plans'],
+      mets: [{ v: '1.5M+', l: 'Total reach' }, { v: '2.8M+', l: 'Total impressions' }, { v: '80K+', l: 'Total engagement' }, { v: '32%', l: 'Average video completion rate' }],
+      metsLabel: 'Social Media Results', metsSub: 'Over 3 months of execution',
       short: 'Multi-channel retail content & activation ops — 3CE, Pop Mart.',
     },
     {

@@ -255,36 +255,47 @@ export function SelectedProjects() {
                           </span>
                         ))}
                       </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
-                        {p.mets.map((m) => (
-                          <div
-                            key={m.l}
-                            style={{
-                              background: 'rgba(255,255,255,.04)',
-                              border: '1px solid rgba(255,255,255,.1)',
-                              borderRadius: 14,
-                              padding: '14px 16px',
-                              opacity: spOp,
-                              transform: spTf,
-                              transition: 'opacity .8s,transform .8s',
-                            }}
-                          >
+                      <div>
+                        {p.metsLabel && (
+                          <div style={{ marginBottom: 10 }}>
+                            <div className="font-mono-vy" style={{ fontSize: 10, letterSpacing: '.16em', textTransform: 'uppercase', color: '#E45CFF', fontWeight: 700 }}>
+                              {p.metsLabel}
+                            </div>
+                            {p.metsSub && <div style={{ marginTop: 2, fontSize: 11, color: '#7A8591' }}>{p.metsSub}</div>}
+                          </div>
+                        )}
+                        <div style={{ display: 'grid', gridTemplateColumns: p.mets.length === 3 ? 'repeat(3,1fr)' : '1fr 1fr', gap: 14 }}>
+                          {p.mets.map((m) => (
                             <div
-                              className="font-mono-vy"
+                              key={m.l}
                               style={{
-                                fontWeight: 700,
-                                fontSize: 24,
-                                backgroundImage: 'linear-gradient(90deg,#E45CFF,#7A9BFF)',
-                                WebkitBackgroundClip: 'text',
-                                backgroundClip: 'text',
-                                color: 'transparent',
+                                background: 'rgba(255,255,255,.04)',
+                                border: '1px solid rgba(255,255,255,.1)',
+                                borderRadius: 14,
+                                padding: p.mets.length === 3 ? '14px 12px' : '14px 16px',
+                                opacity: spOp,
+                                transform: spTf,
+                                transition: 'opacity .8s,transform .8s',
                               }}
                             >
-                              {m.v}
+                              <div
+                                className="font-mono-vy"
+                                style={{
+                                  fontWeight: 700,
+                                  fontSize: m.v.length > 6 ? 15 : 24,
+                                  lineHeight: 1.25,
+                                  backgroundImage: 'linear-gradient(90deg,#E45CFF,#7A9BFF)',
+                                  WebkitBackgroundClip: 'text',
+                                  backgroundClip: 'text',
+                                  color: 'transparent',
+                                }}
+                              >
+                                {m.v}
+                              </div>
+                              <div style={{ marginTop: 3, fontSize: 9, letterSpacing: '.14em', textTransform: 'uppercase', color: '#7A8591' }}>{m.l}</div>
                             </div>
-                            <div style={{ marginTop: 3, fontSize: 9, letterSpacing: '.14em', textTransform: 'uppercase', color: '#7A8591' }}>{m.l}</div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
